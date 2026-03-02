@@ -1,0 +1,28 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-amd
+    labels:
+      yantr.app: "ollama-amd"
+      yantr.service: "AI Models"
+    ports:
+      - "11434"
+    volumes:
+      - ollama_amd_data:/root/.ollama
+    restart: unless-stopped
+    environment:
+      OLLAMA_HOST: "0.0.0.0"
+      # AMD/ROCm specific environment variables
+      HSA_OVERRIDE_GFX_VERSION: ""
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    networks:
+      - ollama_network
+
+volumes:
+  ollama_amd_data:
+
+networks:
+  ollama_network:
+    name: ollama_amd_network
