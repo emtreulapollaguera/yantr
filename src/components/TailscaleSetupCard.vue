@@ -57,7 +57,6 @@ async function deploy() {
       deployError.value = data.error || data.message || 'Deployment failed'
     } else {
       deploySuccess.value = true
-      setTimeout(() => router.push('/apps/tailscale'), 1500)
     }
   } catch (e) {
     deployError.value = e.message || 'Network error'
@@ -86,7 +85,7 @@ async function deploy() {
           <CheckCircle class="w-6 h-6 text-green-600 dark:text-green-500" />
         </div>
         <p class="text-sm font-semibold text-gray-900 dark:text-white tracking-tight">Tailscale Deployed</p>
-        <p class="text-[11px] text-gray-500 dark:text-zinc-400 mt-1 uppercase tracking-wider font-medium">Redirecting…</p>
+        <p class="text-[11px] text-gray-500 dark:text-zinc-400 mt-1 uppercase tracking-wider font-medium">Container starting…</p>
       </div>
     </transition>
 
