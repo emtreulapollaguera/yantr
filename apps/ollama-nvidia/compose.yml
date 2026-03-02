@@ -1,0 +1,35 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-nvidia
+    labels:
+      yantr.app: "ollama-nvidia"
+      yantr.service: "AI Models"
+    ports:
+      - "11434"
+    volumes:
+      - ollama_nvidia_data:/root/.ollama
+    restart: unless-stopped
+    environment:
+      OLLAMA_HOST: "0.0.0.0"
+      # Enable GPU use
+      NVIDIA_VISIBLE_DEVICES: "all"
+      NVIDIA_DRIVER_CAPABILITIES: "compute,utility"
+      # Ollama-specific: prefer GPU first, fallback to CPU if needed
+      OLLAMA_GPU_MEMORY_FALLBACK: "true"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - ollama_network
+
+volumes:
+  ollama_nvidia_data:
+
+networks:
+  ollama_network:
+    name: ollama_nvidia_network
