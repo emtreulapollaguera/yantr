@@ -3,30 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yantr — The Open Source Homelab Control Plane</title>
+    <title>Yantr — Homelab App Store</title>
     <meta
       name="description"
-      content="Turn any device into a self-hosted homelab. Run 100+ apps like Ollama, Open WebUI, and more on your own infrastructure."
+      content="A homelab app store for your own hardware. Browse and deploy 100+ self-hosted apps — Ollama, Nextcloud, Jellyfin, and more — with a single Docker Compose command. No OS replacement, no lock-in."
     />
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yantr.org/" />
-    <meta property="og:title" content="Yantr — The Open Source Homelab Control Plane" />
+    <meta property="og:title" content="Yantr — Homelab App Store" />
     <meta
       property="og:description"
-      content="Turn any device into a self-hosted homelab. Run 100+ apps like Ollama, Open WebUI, and more on your own infrastructure."
+      content="A homelab app store for your own hardware. Browse and deploy 100+ self-hosted apps — Ollama, Nextcloud, Jellyfin, and more — with a single Docker Compose command. No OS replacement, no lock-in."
     />
     <meta property="og:image" content="https://yantr.org/banner.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://yantr.org/" />
-    <meta property="twitter:title" content="Yantr — The Open Source Homelab Control Plane" />
+    <meta property="twitter:title" content="Yantr — Homelab App Store" />
     <meta
       property="twitter:description"
-      content="Turn any device into a self-hosted homelab. Run 100+ apps like Ollama, Open WebUI, and more on your own infrastructure."
+      content="A homelab app store for your own hardware. Browse and deploy 100+ self-hosted apps — Ollama, Nextcloud, Jellyfin, and more — with a single Docker Compose command. No OS replacement, no lock-in."
     />
     <meta property="twitter:image" content="https://yantr.org/banner.png" />
 
@@ -318,7 +318,7 @@
             class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 backdrop-blur px-3 py-1.5 mb-6 text-xs font-semibold tracking-wide text-gray-600 uppercase animate-fade-in-up hover:border-gray-400 transition-colors"
           >
             <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Docker-native self-hosting
+            Homelab App Store · Docker-powered
           </a>
           <h1
             id="hero-title"
@@ -331,7 +331,7 @@
             </span>
           </h1>
           <p id="hero-desc" class="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto mb-10 font-sans animate-fade-in-up delay-200">
-            Turn any device into a private cloud with one command. Run 100+ apps — Ollama, Nextcloud, Jellyfin, and more — fully isolated on your own hardware.
+            A homelab app store for your own hardware. No OS replacement, no lock-in. Free & Open Source. 
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-3 mb-10 animate-fade-in-up delay-300">
@@ -547,6 +547,172 @@
               <path d="M50 15 L85 50 L50 85 L15 50 Z" stroke="currentColor" stroke-width="0.1" fill="none" />
             </svg>
           </div>
+        </div>
+      </section>
+
+      <!-- Comparison Section -->
+      <section id="comparison" class="py-16 sm:py-24 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="text-center mb-12 sm:mb-16">
+            <span class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-2 block">How We Compare</span>
+            <h2 class="text-3xl sm:text-4xl font-bold font-sans tracking-tight mb-4">Yantr vs the alternatives</h2>
+            <p class="text-gray-500 font-sans max-w-2xl mx-auto leading-relaxed">
+              Other tools ask you to replace your OS or buy specific hardware. Yantr works on what you already have — no re-imaging, no lock-in.
+            </p>
+          </div>
+
+          <!-- Comparison Table -->
+          <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+            <table class="w-full text-sm font-sans border-collapse">
+              <thead>
+                <tr class="border-b border-gray-200 bg-gray-50">
+                  <th class="text-left py-4 px-5 font-semibold text-gray-700 w-[220px]">Feature</th>
+                  <!-- Yantr highlighted -->
+                  <th class="py-4 px-4 text-center font-bold text-black bg-black text-white w-[130px]">
+                    <span class="block text-base tracking-widest">YANTR</span>
+                    <span class="block text-[10px] font-normal opacity-70 mt-0.5 uppercase tracking-wider">App Store</span>
+                  </th>
+                  <th class="py-4 px-4 text-center font-semibold text-gray-600 w-[110px]">
+                    <span class="block">YunoHost</span>
+                    <span class="block text-[10px] font-normal text-gray-400 mt-0.5">OS-level</span>
+                  </th>
+                  <th class="py-4 px-4 text-center font-semibold text-gray-600 w-[110px]">
+                    <span class="block">UmbrelOS</span>
+                    <span class="block text-[10px] font-normal text-gray-400 mt-0.5">Hardware-tied</span>
+                  </th>
+                  <th class="py-4 px-4 text-center font-semibold text-gray-600 w-[110px]">
+                    <span class="block">StartOS</span>
+                    <span class="block text-[10px] font-normal text-gray-400 mt-0.5">Custom OS</span>
+                  </th>
+                  <th class="py-4 px-4 text-center font-semibold text-gray-600 w-[110px]">
+                    <span class="block">Portainer</span>
+                    <span class="block text-[10px] font-normal text-gray-400 mt-0.5">Docker UI</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <!-- Row 1 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Runs on your existing OS</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 2 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">No OS replacement required</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 3 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Works on any existing hardware</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full w-auto h-auto">limited</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 4 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Standard Docker Compose apps</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">partial</span></td>
+                </tr>
+                <!-- Row 5 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Curated app catalog (100+)</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                </tr>
+                <!-- Row 6 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Deploy in under a minute</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">20–40 min</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">flash + boot</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">flash + boot</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 7 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">No platform lock-in</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-red-100 text-red-500 font-bold text-xs px-1.5 py-0.5 rounded-full">OS tied</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-red-100 text-red-500 font-bold text-xs px-1.5 py-0.5 rounded-full">HW tied</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-red-100 text-red-500 font-bold text-xs px-1.5 py-0.5 rounded-full">OS tied</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 8 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Open source</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">partial</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">CE only</span></td>
+                </tr>
+                <!-- Row 9 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Funding model</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 font-bold text-xs px-1.5 py-0.5 rounded-full">bootstrapped</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-gray-100 text-gray-600 font-bold text-xs px-1.5 py-0.5 rounded-full">nonprofit</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">VC-backed</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">VC-backed</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">commercial</span></td>
+                </tr>
+                <!-- Row 10 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Ships latest app versions</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">varies</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">varies</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">varies</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 11 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Clean app removal</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">partial</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">partial</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">partial</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                </tr>
+                <!-- Row 12 -->
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Temporary / ephemeral installs</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 font-bold text-base">✓</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                </tr>
+                <!-- Row 13 -->
+                <tr class="hover:bg-gray-50 transition-colors rounded-b-2xl">
+                  <td class="py-4 px-5 text-gray-700 font-medium">Idle RAM usage</td>
+                  <td class="py-4 px-4 text-center bg-black/[0.02]"><span class="inline-flex items-center justify-center bg-emerald-100 text-emerald-700 font-bold text-xs px-1.5 py-0.5 rounded-full">~67 MB</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">~300 MB+</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">~500 MB+</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">~400 MB+</span></td>
+                  <td class="py-4 px-4 text-center"><span class="inline-flex items-center justify-center bg-amber-100 text-amber-600 font-bold text-xs px-1.5 py-0.5 rounded-full">~150 MB+</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-center text-xs text-gray-400 mt-4">Based on publicly available documentation as of early 2026. Details may change.</p>
         </div>
       </section>
 
