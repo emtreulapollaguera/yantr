@@ -163,7 +163,11 @@ async function fetchContainers() {
 }
 
 function viewAppDetail(appId) {
-  router.push(`/apps/${appId}`);
+  if (appInstanceCounts.value[appId] > 0) {
+    router.push(`/app/${appId}`);
+  } else {
+    router.push(`/apps/${appId}`);
+  }
 }
 
 // Lifecycle
@@ -327,7 +331,7 @@ onUnmounted(() => {
                   :key="app.id"
                   :app="app"
                   :instance-count="appInstanceCounts[app.id] || 0"
-                  @click="viewAppDetail(app.id)"
+                  @select="viewAppDetail(app.id)"
                 />
             </div>
         </div>

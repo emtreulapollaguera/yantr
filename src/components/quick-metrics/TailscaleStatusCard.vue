@@ -1,14 +1,11 @@
 <script setup>
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { Wifi, WifiOff, ArrowRight, Shield } from 'lucide-vue-next'
+import { computed, ref } from 'vue'
+import { Wifi, WifiOff, Shield } from 'lucide-vue-next'
 
 const props = defineProps({
   containers: { type: Array, default: () => [] },
   currentTime: { type: Number, default: () => Date.now() },
 })
-
-const router = useRouter()
 
 const tailscaleContainer = computed(() => {
   const list = Array.isArray(props.containers) ? props.containers : []
@@ -42,13 +39,28 @@ function formatUptime(ms) {
   const d = Math.floor(h / 24)
   return `${d}d ${h % 24}h`
 }
+
+const rippling = ref(false)
+
+function handleClick() {
+  if (rippling.value) return
+  rippling.value = true
+  setTimeout(() => { rippling.value = false }, 700)
+}
 </script>
 
 <template>
   <div
-    @click="router.push('/apps/tailscale')"
-    class="relative group h-full flex flex-col bg-white dark:bg-[#0A0A0A] border border-gray-200 dark:border-zinc-800 rounded-xl p-6 overflow-hidden transition-all duration-400 cursor-pointer hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/40 hover:-translate-y-1 hover:border-gray-300 dark:hover:border-zinc-600"
+    @click="handleClick"
+    class="relative group h-full flex flex-col bg-white dark:bg-[#0A0A0A] border border-gray-200 dark:border-zinc-800 rounded-xl p-6 overflow-hidden transition-all duration-300 cursor-default"
+    :class="rippling ? 'border-green-400 dark:border-green-500' : ''"
   >
+    <!-- Ripple ring on click -->
+    <div
+      v-if="rippling"
+      class="absolute inset-0 rounded-xl pointer-events-none z-20 border-2 border-green-400 dark:border-green-500 animate-ripple-ping"
+    ></div>
+
     <!-- Hover accent line -->
     <div
       class="absolute top-0 left-0 w-full h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -70,10 +82,7 @@ function formatUptime(ms) {
           <WifiOff v-else class="w-5 h-5 text-red-600 dark:text-red-500" />
         </div>
         <div>
-          <h3
-            class="text-sm font-semibold text-gray-900 dark:text-white tracking-tight transition-colors"
-            :class="isRunning ? 'group-hover:text-green-600 dark:group-hover:text-green-400' : 'group-hover:text-red-600 dark:group-hover:text-red-400'"
-          >
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white tracking-tight">
             Tailscale
           </h3>
           <div class="flex items-center gap-2 mt-1">
@@ -89,7 +98,7 @@ function formatUptime(ms) {
       </div>
 
       <div class="shrink-0">
-        <Shield class="w-4 h-4 text-gray-300 dark:text-zinc-600 group-hover:text-green-500 dark:group-hover:text-green-500 transition-colors duration-300" />
+        <Shield class="w-4 h-4 text-gray-300 dark:text-zinc-600" />
       </div>
     </div>
 
@@ -105,12 +114,6 @@ function formatUptime(ms) {
         <div class="mt-3 text-[11px] font-medium text-gray-500 dark:text-zinc-400">
           {{ isRunning ? 'Secure mesh VPN active' : 'Remote access unavailable' }}
         </div>
-      </div>
-
-      <!-- Manage arrow (slides in on hover) -->
-      <div class="shrink-0 flex flex-col items-end justify-end gap-1 pb-0.5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-zinc-500">Manage</span>
-        <ArrowRight class="w-4 h-4 text-gray-400 dark:text-zinc-500" />
       </div>
     </div>
   </div>
