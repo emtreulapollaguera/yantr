@@ -32,6 +32,8 @@ COPY binary/dufs /usr/local/bin/dufs
 COPY daemon/ ./daemon/
 COPY apps/ ./apps/
 
+# Configure
+
 EXPOSE 5252
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
