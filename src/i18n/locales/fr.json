@@ -771,5 +771,22 @@
         "desc": "Crédité dans le README et les releases en tant que soutien principal."
       }
     }
+  },
+  "communitiesCard": {
+    "label": "Communautés",
+    "badge": "Communauté",
+    "title": "Rejoignez la conversation.",
+    "description": "Connectez-vous avec d'autres utilisateurs de Yantr, partagez vos configurations et obtenez de l'aide de la communauté.",
+    "footer": "Discussion communautaire",
+    "links": {
+      "telegram": {
+        "label": "Telegram",
+        "desc": "Discutez avec la communauté en temps réel."
+      },
+      "github": {
+        "label": "GitHub Discussions",
+        "desc": "Posez des questions et partagez des idées sur GitHub."
+      }
+    }
   }
 }

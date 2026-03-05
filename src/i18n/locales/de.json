@@ -771,5 +771,22 @@
         "desc": "Im README und in den Releases als Hauptunterstützer genannt."
       }
     }
+  },
+  "communitiesCard": {
+    "label": "Communities",
+    "badge": "Community",
+    "title": "Sei Teil der Unterhaltung.",
+    "description": "Vernetze dich mit anderen Yantr-Nutzern, teile Konfigurationen und erhalte Hilfe von der Community.",
+    "footer": "Community-Diskussion",
+    "links": {
+      "telegram": {
+        "label": "Telegram",
+        "desc": "Chatte in Echtzeit mit der Community."
+      },
+      "github": {
+        "label": "GitHub Discussions",
+        "desc": "Stelle Fragen und teile Ideen auf GitHub."
+      }
+    }
   }
 }

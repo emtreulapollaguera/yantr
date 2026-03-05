@@ -771,5 +771,22 @@
         "desc": "在 README 和发布记录中作为核心支持者被致谢。"
       }
     }
+  },
+  "communitiesCard": {
+    "label": "社区",
+    "badge": "社区",
+    "title": "加入讨论。",
+    "description": "与其他 Yantr 用户交流，分享配置，获取社区帮助。",
+    "footer": "社区讨论",
+    "links": {
+      "telegram": {
+        "label": "Telegram",
+        "desc": "与社区实时交流。"
+      },
+      "github": {
+        "label": "GitHub Discussions",
+        "desc": "在 GitHub 上提问并分享想法。"
+      }
+    }
   }
 }

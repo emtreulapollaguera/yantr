@@ -771,5 +771,22 @@
         "desc": "Credited in the README and releases as a core backer."
       }
     }
+  },
+  "communitiesCard": {
+    "label": "Communities",
+    "badge": "Community",
+    "title": "Join the conversation.",
+    "description": "Connect with other Yantr users, share setups, and get help from the community.",
+    "footer": "Community discussion",
+    "links": {
+      "telegram": {
+        "label": "Telegram",
+        "desc": "Chat with the community in real time."
+      },
+      "github": {
+        "label": "GitHub Discussions",
+        "desc": "Ask questions and share ideas on GitHub."
+      }
+    }
   }
 }

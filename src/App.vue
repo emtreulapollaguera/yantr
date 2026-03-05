@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute } from "vue-router";
-import { Box, Boxes, Layers, HardDrive, ClipboardList, Send, Github, Heart, Home, Moon, Sun, Compass, Check, ChevronDown } from "lucide-vue-next";
+import { Box, Boxes, Layers, HardDrive, ClipboardList, Github, Heart, Home, Moon, Sun, Compass, Check, ChevronDown } from "lucide-vue-next";
 import NotificationBanner from './components/NotificationBanner.vue';
 import { onMounted, onUnmounted, ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
@@ -170,20 +170,6 @@ onUnmounted(() => {
 
       <!-- Bottom Actions -->
       <div class="flex flex-col items-center gap-3 mt-4">
-        <a
-          href="https://t.me/+h4RvCk63PxUyODQ1"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="action-btn group relative w-12 h-12 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:shadow-md hover:shadow-gray-900/10 dark:text-zinc-300 dark:hover:bg-zinc-800/50 dark:hover:shadow-black/40 transition-all duration-300 ease-out"
-          title="Join Telegram"
-        >
-          <Send :size="20" class="group-hover:scale-110 transition-transform duration-300" />
-          <span
-            class="absolute left-full ml-3 px-3 py-1.5 bg-black text-white text-xs font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none dark:bg-white dark:text-black"
-          >
-            Telegram
-          </span>
-        </a>
         <!-- Language Toggle -->
         <div class="relative" ref="languageMenuRef">
           <button
@@ -272,17 +258,6 @@ onUnmounted(() => {
           <Box :size="22" />
           <span class="text-xs font-medium">{{ t('nav.apps') }}</span>
         </router-link>
-
-        <a
-          href="https://t.me/+h4RvCk63PxUyODQ1"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col items-center gap-1 min-w-[64px] min-h-[52px] px-3 py-2 rounded-xl transition-all active:scale-95 text-gray-600 dark:text-zinc-400 justify-center"
-          :title="t('nav.telegram')"
-        >
-          <Send :size="22" />
-          <span class="text-xs font-medium">{{ t('nav.telegram') }}</span>
-        </a>
 
         <div class="relative">
           <button

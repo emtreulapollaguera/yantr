@@ -771,5 +771,22 @@
         "desc": "READMEとリリースにコアバッカーとしてクレジットされます。"
       }
     }
+  },
+  "communitiesCard": {
+    "label": "コミュニティ",
+    "badge": "コミュニティ",
+    "title": "会話に参加しましょう。",
+    "description": "他の Yantr ユーザーとつながり、設定を共有し、コミュニティからサポートを受けましょう。",
+    "footer": "コミュニティディスカッション",
+    "links": {
+      "telegram": {
+        "label": "Telegram",
+        "desc": "コミュニティとリアルタイムでチャットしましょう。"
+      },
+      "github": {
+        "label": "GitHub Discussions",
+        "desc": "GitHub で質問したりアイデアを共有しましょう。"
+      }
+    }
   }
 }
