@@ -24,7 +24,6 @@ import BackupStatusCard from "../components/quick-metrics/BackupStatusCard.vue";
 import ToolsNavCard from "../components/home/ToolsNavCard.vue";
 import ExternalLinksCard from "../components/home/ExternalLinksCard.vue";
 import SponsorCard from "../components/home/SponsorCard.vue";
-import CommunitiesCard from "../components/home/CommunitiesCard.vue";
 
 const { apiUrl } = useApiUrl();
 const { currentTime } = useCurrentTime();
@@ -417,10 +416,6 @@ onUnmounted(() => {
 
             <div v-if="activeFilter === 'all'">
               <SponsorCard />
-            </div>
-
-            <div v-if="activeFilter === 'all'">
-              <CommunitiesCard />
             </div>
           </div>
         </div>
