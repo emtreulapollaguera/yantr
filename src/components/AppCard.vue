@@ -25,6 +25,13 @@ const props = defineProps({
 const emit = defineEmits(['select']);
 const { app, instanceCount } = toRefs(props);
 
+const randomTag = computed(() => {
+  const tags = app.value?.tags;
+  if (!Array.isArray(tags) || tags.length === 0) return null;
+  const index = Math.floor(Math.random() * tags.length);
+  return tags[index];
+});
+
 // Determine the state for UI color-coding
 const appState = computed(() => {
   if (instanceCount.value > 0) return 'running';
@@ -122,7 +129,7 @@ function handleClick() {
         <div class="flex items-center gap-1.5 text-gray-400 dark:text-zinc-500 group-hover:text-gray-600 dark:group-hover:text-zinc-300 transition-colors duration-300">
           <Layers :size="14" />
           <span class="text-[11px] font-semibold uppercase tracking-wider">
-            {{ app?.tags?.[0] || t('appCard.application') }}
+            {{ randomTag || t('appCard.application') }}
           </span>
         </div>
         
