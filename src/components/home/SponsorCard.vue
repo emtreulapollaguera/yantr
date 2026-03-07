@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
-import { MessageCircle, Zap, GitPullRequest, ShieldCheck, ArrowUpRight } from "lucide-vue-next";
+import { MessageCircle, Zap, GitPullRequest, ShieldCheck, ArrowUpRight, Github, Coffee } from "lucide-vue-next";
 
 const { t } = useI18n();
 
@@ -40,6 +40,19 @@ const benefits = computed(() => [
 
 const activeBenefit = computed(() => benefits.value[currentIndex.value]);
 
+const supportLinks = [
+  {
+    label: "GitHub Sponsors",
+    href: "https://github.com/sponsors/besoeasy",
+    icon: Github,
+  },
+  {
+    label: "Ko-fi",
+    href: "https://ko-fi.com/besoeasy",
+    icon: Coffee,
+  },
+];
+
 onMounted(() => {
   document.addEventListener("mousemove", onMouseMove);
   perkInterval = setInterval(() => {
@@ -56,8 +69,8 @@ onUnmounted(() => {
 <template>
   <div class="relative group h-full flex flex-col bg-white dark:bg-[#0A0A0A] border border-gray-200 dark:border-zinc-800 rounded-xl overflow-hidden transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/40 hover:border-gray-300 dark:hover:border-zinc-600">
     <!-- Hover Accents -->
-    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTUwLCAxNTAsIDE1MCwgMC4xKSIvPjwvc3ZnPg==')] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+    <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-amber-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTUwLCAxNTAsIDE1MCwgMC4xKSIvPjwvc3ZnPg==')] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mask-[linear-gradient(to_bottom,white,transparent)]"></div>
 
     <div class="relative z-10 flex flex-col h-full p-5">
 
@@ -128,15 +141,22 @@ onUnmounted(() => {
 
       <!-- CTA -->
       <div class="mt-4 pt-3 border-t border-gray-100 dark:border-zinc-800/80">
-        <a
-          href="https://sponsor.besoeasy.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group/cta flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-950 dark:bg-white text-white dark:text-gray-950 transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 active:scale-[0.98]"
-        >
-          <span class="text-xs font-bold tracking-tight">{{ t('sponsorCard.cta') }}</span>
-          <ArrowUpRight class="w-4 h-4 opacity-50 transition-all duration-300 group-hover/cta:opacity-100 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
-        </a>
+        <div class="flex flex-col gap-2">
+          <a
+            v-for="link in supportLinks"
+            :key="link.href"
+            :href="link.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/cta flex items-center justify-between w-full px-4 py-3 rounded-lg bg-gray-950 dark:bg-white text-white dark:text-gray-950 transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 active:scale-[0.98]"
+          >
+            <span class="flex items-center gap-2 min-w-0">
+              <component :is="link.icon" class="w-4 h-4 shrink-0 opacity-80" />
+              <span class="text-xs font-bold tracking-tight truncate">{{ link.label }}</span>
+            </span>
+            <ArrowUpRight class="w-4 h-4 opacity-50 transition-all duration-300 group-hover/cta:opacity-100 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
