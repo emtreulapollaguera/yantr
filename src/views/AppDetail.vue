@@ -5,7 +5,7 @@ import { useNotification } from '../composables/useNotification';
 import { useApiUrl } from "../composables/useApiUrl";
 import { usePortConflict } from "../composables/usePortConflict";
 import { useI18n } from "vue-i18n";
-import { Globe, FileCode, ArrowLeft, Package, Clock, Tag, ExternalLink, Activity, Info, AlertTriangle, Check, Terminal, Play, CreditCard, RotateCcw, Download } from "lucide-vue-next";
+import { Globe, FileCode, ArrowLeft, Package, Clock, Tag, ExternalLink, Activity, Info, AlertTriangle, Check, Terminal, Play, CreditCard, RotateCcw, Download, Plus, X } from "lucide-vue-next";
 import { buildChatGptExplainUrl } from "../utils/chatgpt";
 
 const route = useRoute();
@@ -26,6 +26,15 @@ const temporaryInstall = ref(false);
 const expirationHours = ref(24);
 const customizePorts = ref(false);
 const customPortMappings = ref({});
+const extraEnvRows = ref([]);
+
+function addExtraEnvRow() {
+  extraEnvRows.value.push({ key: '', value: '' });
+}
+
+function removeExtraEnvRow(index) {
+  extraEnvRows.value.splice(index, 1);
+}
 const imageDetails = ref(null);
 const loadingImages = ref(false);
 
@@ -374,9 +383,17 @@ async function deployApp() {
   toast.info(t('appDetail.deployingApp', { name: app.value.name, suffix: instanceSuffix }));
 
   try {
+    // Build extra env object from user-added custom rows
+    const extraEnv = {};
+    for (const row of extraEnvRows.value) {
+      const k = row.key.trim();
+      if (k) extraEnv[k] = row.value;
+    }
+
     const requestBody = {
       appId: app.value.id,
       environment: envValues.value,
+      extraEnv,
       instanceId: instanceNum, // Pass instance number to backend
     };
 
@@ -688,6 +705,44 @@ onMounted(async () => {
                   />
                   <p v-if="env.description" class="text-[10px] text-gray-500 dark:text-zinc-500 leading-tight">{{ env.description }}</p>
                 </div>
+              </div>
+
+              <!-- Custom / Extra Environment Variables -->
+              <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-zinc-800">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-zinc-500">{{ t('appDetail.customVars') }}</span>
+                  <button
+                    @click="addExtraEnvRow"
+                    class="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                  >
+                    <Plus :size="11" />
+                    {{ t('appDetail.addCustomVar') }}
+                  </button>
+                </div>
+                <div v-if="extraEnvRows.length > 0" class="space-y-2">
+                  <div v-for="(row, i) in extraEnvRows" :key="i" class="flex items-center gap-2">
+                    <input
+                      v-model="row.key"
+                      type="text"
+                      :placeholder="t('appDetail.varName')"
+                      class="w-2/5 bg-transparent border border-gray-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs font-mono text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all uppercase"
+                    />
+                    <span class="text-gray-400 dark:text-zinc-600 text-xs shrink-0">=</span>
+                    <input
+                      v-model="row.value"
+                      type="text"
+                      :placeholder="t('appDetail.varValue')"
+                      class="flex-1 bg-transparent border border-gray-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs font-mono text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                    />
+                    <button
+                      @click="removeExtraEnvRow(i)"
+                      class="shrink-0 p-1.5 rounded-md text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-all"
+                    >
+                      <X :size="13" />
+                    </button>
+                  </div>
+                </div>
+                <p v-else class="text-[10px] text-gray-400 dark:text-zinc-600">{{ t('appDetail.customVarsHint') }}</p>
               </div>
 
               <!-- Options Toggles -->

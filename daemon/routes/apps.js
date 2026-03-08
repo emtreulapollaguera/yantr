@@ -72,7 +72,7 @@ export default async function appsRoutes(fastify) {
   fastify.post("/api/deploy", async (request, reply) => {
     log("info", "🚀 [POST /api/deploy] Deploy request received");
     try {
-      const { appId, environment, expiresIn, customPortMappings, instanceId, allowMissingDependencies } = request.body;
+      const { appId, environment, extraEnv, expiresIn, customPortMappings, instanceId, allowMissingDependencies } = request.body;
       log("info", `🚀 [POST /api/deploy] Deploying app: ${appId}${instanceId > 1 ? ` (Instance #${instanceId})` : ""}`);
 
       if (!appId) {
@@ -222,7 +222,37 @@ export default async function appsRoutes(fastify) {
       await writeFile(path.join(appPath, ".compose.tmp.yml"), modifiedComposeContent, "utf-8");
     }
 
-    const useTmp = expiresIn || customPortMappings || (instanceId && instanceId > 1);
+    // Inject extra/custom env vars directly into each compose service
+    const extraEnvEntries = extraEnv && typeof extraEnv === 'object'
+      ? Object.entries(extraEnv).filter(([k, v]) => k.trim() && v !== null && v !== undefined && String(v).trim() !== '')
+      : [];
+    if (extraEnvEntries.length > 0) {
+      let parsedComposeFull;
+      try { parsedComposeFull = YAML.parse(modifiedComposeContent); } catch { parsedComposeFull = null; }
+      if (parsedComposeFull?.services) {
+        for (const svcName of Object.keys(parsedComposeFull.services)) {
+          const svc = parsedComposeFull.services[svcName];
+          if (Array.isArray(svc.environment)) {
+            // Convert array form to object so we can add keys
+            const envObj = {};
+            for (const entry of svc.environment) {
+              const idx = String(entry).indexOf('=');
+              if (idx > 0) envObj[entry.slice(0, idx)] = entry.slice(idx + 1);
+              else envObj[entry] = null;
+            }
+            for (const [k, v] of extraEnvEntries) envObj[k.trim()] = v;
+            svc.environment = envObj;
+          } else {
+            if (!svc.environment) svc.environment = {};
+            for (const [k, v] of extraEnvEntries) svc.environment[k.trim()] = v;
+          }
+        }
+        modifiedComposeContent = YAML.stringify(parsedComposeFull);
+        await writeFile(path.join(appPath, ".compose.tmp.yml"), modifiedComposeContent, "utf-8");
+      }
+    }
+
+    const useTmp = expiresIn || customPortMappings || (instanceId && instanceId > 1) || extraEnvEntries.length > 0;
     const composeFile = useTmp ? ".compose.tmp.yml" : "compose.yml";
     const projectName = (instanceId && instanceId > 1) ? `${appId}-${instanceId}` : appId;
 
