@@ -10,14 +10,12 @@ import YantraContainersGrid from "../components/home/YantraContainersGrid.vue";
 import VolumeContainersGrid from "../components/home/VolumeContainersGrid.vue";
 import OtherContainersGrid from "../components/home/OtherContainersGrid.vue";
 import SystemCleaner from "../components/SystemCleaner.vue";
-import WatchtowerAlert from "../components/WatchtowerAlert.vue";
 import TailscaleSetupCard from "../components/TailscaleSetupCard.vue";
 import TailscaleStatusCard from "../components/quick-metrics/TailscaleStatusCard.vue";
 import OverviewPulseCard from "../components/home/OverviewPulseCard.vue";
 import MachineIdentityCard from "../components/quick-metrics/MachineIdentityCard.vue";
 import AverageUptimeCard from "../components/quick-metrics/AverageUptimeCard.vue";
 import ExpiringContainersCard from "../components/quick-metrics/ExpiringContainersCard.vue";
-import WatchtowerNextCheckCard from "../components/quick-metrics/WatchtowerNextCheckCard.vue";
 import HostMetricsCard from "../components/quick-metrics/HostMetricsCard.vue";
 import BackupStatusCard from "../components/quick-metrics/BackupStatusCard.vue";
 import ToolsNavCard from "../components/home/ToolsNavCard.vue";
@@ -39,7 +37,6 @@ const volumes = ref([]);
 const images = ref([]);
 const volumeBrowsers = ref([]);
 const loading = ref(false);
-const watchtowerInstalled = ref(false);
 const tailscaleInstalled = ref(false);
 const activeFilter = ref("all");
 
@@ -77,9 +74,6 @@ const reclaimableStats = computed(() => {
     },
   };
 });
-
-// Watchtower Visibility
-const showWatchtowerAlert = computed(() => !watchtowerInstalled.value);
 
 // Tailscale Visibility
 const showTailscaleSetup = computed(() => !tailscaleInstalled.value);
@@ -162,9 +156,6 @@ async function fetchContainers() {
     if (data.success) {
       containers.value = data.containers;
 
-      watchtowerInstalled.value = data.containers.some(
-        (c) => c.name?.toLowerCase().includes("watchtower") || c.Names?.some((name) => name.toLowerCase().includes("watchtower")),
-      );
       tailscaleInstalled.value = data.containers.some(
         (c) => c.name?.toLowerCase().includes("tailscale") || c.Names?.some((name) => name.toLowerCase().includes("tailscale")),
       );
@@ -239,7 +230,7 @@ onUnmounted(() => {
 <template>
   <div class="min-h-screen bg-white dark:bg-[#0A0A0A] text-gray-900 dark:text-white font-sans">
     <!-- Main Content -->
-    <div class="p-3 sm:p-4 lg:p-8 max-w-[1600px] mx-auto">
+    <div class="p-3 sm:p-4 lg:p-8 max-w-400 mx-auto">
       <div class="space-y-8">
         <!-- Loading State -->
         <div v-if="loading" class="flex flex-col items-center justify-center py-32">
@@ -344,15 +335,7 @@ onUnmounted(() => {
               />
             </div>
 
-            <div v-if="showMetrics && showWatchtowerAlert" class="h-full">
-              <WatchtowerAlert />
-            </div>
-
-            <div v-else-if="showMetrics" class="h-full">
-              <WatchtowerNextCheckCard :containers="containers" :current-time="currentTime" :interval-hours="3" />
-            </div>
-
-            <div v-if="showMetrics">
+            <div v-if="showMetrics" class="h-full">
               <HostMetricsCard :api-url="apiUrl" />
             </div>
 

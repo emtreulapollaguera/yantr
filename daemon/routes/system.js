@@ -2,22 +2,23 @@ import {
   docker, log, logs, MAX_LOGS, packageJson,
   getPublicIpIdentityCached,
 } from "../shared.js";
-import { runAutoUpdate, runSelfUpdate } from "../autoupdate.js";
+import { runUpdate, runSelfUpdate } from "../autoupdate.js";
 
 export default async function systemRoutes(fastify) {
 
-  // POST /api/autoupdate/run
+  // POST /api/autoupdate/run  — update specific containers by name (per-stack)
   fastify.post("/api/autoupdate/run", async (request, reply) => {
-    const result = await runAutoUpdate();
-    if (result.skipped) return reply.send({ success: false, message: "Update already in progress" });
+    const { containerNames } = request.body || {};
+    if (!Array.isArray(containerNames) || containerNames.length === 0)
+      return reply.code(400).send({ success: false, error: "containerNames array is required" });
+    const result = await runUpdate(containerNames);
     if (result.error) return reply.code(500).send({ success: false, error: result.error });
     return reply.send({ success: true, exitCode: result.exitCode, output: result.stdout, warnings: result.stderr });
   });
 
-  // POST /api/autoupdate/self
+  // POST /api/autoupdate/self  — update yantr itself
   fastify.post("/api/autoupdate/self", async (request, reply) => {
     const result = await runSelfUpdate();
-    if (result.skipped) return reply.send({ success: false, message: "Self-update already in progress" });
     if (result.error) return reply.code(500).send({ success: false, error: result.error });
     return reply.send({ success: true, exitCode: result.exitCode, output: result.stdout, warnings: result.stderr });
   });

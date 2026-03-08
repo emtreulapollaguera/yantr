@@ -598,7 +598,12 @@
     "logs": "Logs",
     "configurationVariables": "Configuration Variables",
     "hide": "Hide",
-    "show": "Show"
+    "show": "Show",
+    "updateStack": "Update",
+    "updating": "Updating…",
+    "updatingStack": "Pulling latest images for {name}…",
+    "updateComplete": "Update complete — containers are running the latest images",
+    "updateFailed": "Update failed"
   },
   "appCard": {
     "active": "Active ({count})",

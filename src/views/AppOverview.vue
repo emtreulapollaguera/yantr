@@ -174,10 +174,10 @@ onUnmounted(() => clearInterval(interval));
             class="group relative bg-white dark:bg-[#0A0A0A] rounded-xl border border-gray-200 dark:border-zinc-800 p-5 cursor-pointer hover:border-gray-300 dark:hover:border-zinc-600 transition-all duration-300 focus:outline-none overflow-hidden"
           >
             <!-- Glowing Accent Line -->
-            <div class="absolute top-0 left-0 w-full h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" :class="{
-                'bg-gradient-to-r from-transparent via-green-500 to-transparent': stackState(stack) === 'running',
-                'bg-gradient-to-r from-transparent via-amber-500 to-transparent': stackState(stack) === 'partial',
-                'bg-gradient-to-r from-transparent via-gray-500 to-transparent': stackState(stack) === 'stopped',
+            <div class="absolute top-0 left-0 w-full h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" :class="{
+                'bg-linear-to-r from-transparent via-green-500 to-transparent': stackState(stack) === 'running',
+                'bg-linear-to-r from-transparent via-amber-500 to-transparent': stackState(stack) === 'partial',
+                'bg-linear-to-r from-transparent via-gray-500 to-transparent': stackState(stack) === 'stopped',
             }"></div>
 
             <div class="flex items-start justify-between gap-2 mb-5 relative z-10">

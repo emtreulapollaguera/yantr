@@ -598,7 +598,12 @@
     "logs": "ログ",
     "configurationVariables": "設定変数",
     "hide": "非表示",
-    "show": "表示"
+    "show": "表示",
+    "updateStack": "更新",
+    "updating": "更新中…",
+    "updatingStack": "{name} の最新イメージを取得中…",
+    "updateComplete": "更新完了 — コンテナは最新イメージで動作しています",
+    "updateFailed": "更新失敗"
   },
   "appCard": {
     "active": "アクティブ ({count})",

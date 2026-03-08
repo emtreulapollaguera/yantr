@@ -148,13 +148,13 @@ onUnmounted(() => {
              class="flex gap-4 px-3 py-1 hover:bg-white dark:hover:bg-[#0A0A0A] rounded group selection:bg-blue-500/30 transition-colors">
              
              <!-- Line Num -->
-             <div class="select-none text-gray-400 dark:text-zinc-600 w-8 text-right text-[11px] pt-[2px] font-medium">{{ idx + 1 }}</div>
+             <div class="select-none text-gray-400 dark:text-zinc-600 w-8 text-right text-[11px] pt-0.5 font-medium">{{ idx + 1 }}</div>
              
              <!-- Time -->
-             <div class="select-none text-blue-600 dark:text-blue-400/80 w-16 sm:w-24 shrink-0 text-[10px] sm:text-[11px] pt-[2px] font-medium tracking-tight">{{ formatTimestamp(log.timestamp) }}</div>
+             <div class="select-none text-blue-600 dark:text-blue-400/80 w-16 sm:w-24 shrink-0 text-[10px] sm:text-[11px] pt-0.5 font-medium tracking-tight">{{ formatTimestamp(log.timestamp) }}</div>
              
              <!-- Level -->
-             <div class="select-none w-[3px] rounded-full shrink-0 my-0.5" :class="log.level === 'error' ? 'bg-red-500' : 'bg-gray-300 dark:bg-zinc-700'"></div>
+             <div class="select-none w-0.75 rounded-full shrink-0 my-0.5" :class="log.level === 'error' ? 'bg-red-500' : 'bg-gray-300 dark:bg-zinc-700'"></div>
 
              <!-- Content -->
              <div class="flex-1 break-all whitespace-pre-wrap text-gray-700 dark:text-zinc-300 leading-relaxed text-xs">

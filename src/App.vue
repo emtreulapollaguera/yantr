@@ -200,7 +200,7 @@ onUnmounted(() => {
           >
             <div
               v-if="showLanguageMenu"
-              class="absolute left-full ml-3 bottom-0 bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-gray-200 dark:border-zinc-700 py-1.5 min-w-[180px] z-50 overflow-hidden"
+              class="absolute left-full ml-3 bottom-0 bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-gray-200 dark:border-zinc-700 py-1.5 min-w-45 z-50 overflow-hidden"
             >
               <button
                 v-for="lang in languages"
@@ -245,7 +245,7 @@ onUnmounted(() => {
         <router-link
           to="/home"
           :class="isActive('home') ? 'bg-black text-white shadow-lg shadow-black/10 dark:bg-white dark:text-black dark:shadow-white/10' : 'text-gray-600 dark:text-zinc-400'"
-          class="flex flex-col items-center gap-1 min-w-[64px] min-h-[52px] px-3 py-2 rounded-xl transition-all active:scale-95 justify-center"
+          class="flex flex-col items-center gap-1 min-w-16 min-h-13 px-3 py-2 rounded-xl transition-all active:scale-95 justify-center"
           :title="t('nav.home')"
         >
           <Home :size="22" />
@@ -255,7 +255,7 @@ onUnmounted(() => {
         <router-link
           to="/apps"
           :class="isActive('apps') ? 'bg-black text-white shadow-lg shadow-black/10 dark:bg-white dark:text-black dark:shadow-white/10' : 'text-gray-600 dark:text-zinc-400'"
-          class="flex flex-col items-center gap-1 min-w-[64px] min-h-[52px] px-3 py-2 rounded-xl transition-all active:scale-95 justify-center"
+          class="flex flex-col items-center gap-1 min-w-16 min-h-13 px-3 py-2 rounded-xl transition-all active:scale-95 justify-center"
           :title="t('nav.apps')"
         >
           <Box :size="22" />
@@ -266,7 +266,7 @@ onUnmounted(() => {
           <button
             type="button"
             @click="toggleLanguageMenu"
-            class="flex flex-col items-center gap-1 min-w-[64px] min-h-[52px] px-3 py-2 rounded-xl transition-all active:scale-95 text-gray-600 dark:text-zinc-400 justify-center"
+            class="flex flex-col items-center gap-1 min-w-16 min-h-13 px-3 py-2 rounded-xl transition-all active:scale-95 text-gray-600 dark:text-zinc-400 justify-center"
             :title="activeLanguage.name"
           >
             <span class="text-xl leading-none select-none">{{ activeLanguage.flag }}</span>
@@ -284,7 +284,7 @@ onUnmounted(() => {
           >
             <div
               v-if="showLanguageMenu"
-              class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-gray-200 dark:border-zinc-700 py-1.5 min-w-[180px] z-50 overflow-hidden"
+              class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white dark:bg-zinc-900 rounded-xl shadow-2xl border border-gray-200 dark:border-zinc-700 py-1.5 min-w-45 z-50 overflow-hidden"
             >
               <button
                 v-for="lang in languages"
@@ -310,7 +310,7 @@ onUnmounted(() => {
         <button
           type="button"
           @click="toggleTheme"
-          class="flex flex-col items-center gap-1 min-w-[64px] min-h-[52px] px-3 py-2 rounded-xl transition-all active:scale-95 text-gray-600 dark:text-zinc-400 justify-center"
+          class="flex flex-col items-center gap-1 min-w-16 min-h-13 px-3 py-2 rounded-xl transition-all active:scale-95 text-gray-600 dark:text-zinc-400 justify-center"
           :title="theme === 'dark' ? t('nav.lightMode') : t('nav.darkMode')"
         >
           <component :is="theme === 'dark' ? Sun : Moon" :size="22" />

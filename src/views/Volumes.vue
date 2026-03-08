@@ -219,7 +219,7 @@ onUnmounted(() => {
       <!-- Stats Overview -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="group relative overflow-hidden bg-white dark:bg-[#0A0A0A] p-5 rounded-xl border border-gray-200 dark:border-zinc-800 flex flex-col justify-between h-32 hover:border-gray-300 dark:hover:border-zinc-600 transition-all duration-300">
-          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="flex justify-between items-start z-10">
             <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-500">{{ t('volumes.totalVolumes') }}</span>
             <Box class="w-4 h-4 text-gray-400 dark:text-zinc-500 group-hover:text-blue-500 transition-colors" />
@@ -228,7 +228,7 @@ onUnmounted(() => {
         </div>
 
         <div class="group relative overflow-hidden bg-white dark:bg-[#0A0A0A] p-5 rounded-xl border border-gray-200 dark:border-zinc-800 flex flex-col justify-between h-32 hover:border-gray-300 dark:hover:border-zinc-600 transition-all duration-300">
-          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-green-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="flex justify-between items-start z-10">
             <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-500">{{ t('volumes.inUse') }}</span>
             <Check class="w-4 h-4 text-gray-400 dark:text-zinc-500 group-hover:text-green-500 transition-colors" />
@@ -237,7 +237,7 @@ onUnmounted(() => {
         </div>
 
         <div class="group relative overflow-hidden bg-white dark:bg-[#0A0A0A] p-5 rounded-xl border border-gray-200 dark:border-zinc-800 flex flex-col justify-between h-32 hover:border-gray-300 dark:hover:border-zinc-600 transition-all duration-300">
-          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="flex justify-between items-start z-10">
             <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-500">{{ t('volumes.unused') }}</span>
             <AlertCircle class="w-4 h-4 text-gray-400 dark:text-zinc-500 group-hover:text-amber-500 transition-colors" />
@@ -246,7 +246,7 @@ onUnmounted(() => {
         </div>
 
         <div class="group relative overflow-hidden bg-white dark:bg-[#0A0A0A] p-5 rounded-xl border border-gray-200 dark:border-zinc-800 flex flex-col justify-between h-32 hover:border-gray-300 dark:hover:border-zinc-600 transition-all duration-300">
-          <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div class="flex justify-between items-start z-10">
             <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-zinc-500">{{ t('volumes.browsing') }}</span>
             <Eye class="w-4 h-4 text-gray-400 dark:text-zinc-500 group-hover:text-blue-400 transition-colors" />
@@ -358,7 +358,7 @@ onUnmounted(() => {
                    </tr>
                    <tr v-for="volume in filteredUsed" :key="volume.name" class="group hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-colors">
                       <td class="px-6 py-4">
-                          <div class="font-mono text-gray-900 dark:text-white truncate max-w-[250px] text-xs" :title="volume.name">{{ volume.name }}</div>
+                          <div class="font-mono text-gray-900 dark:text-white truncate max-w-62.5 text-xs" :title="volume.name">{{ volume.name }}</div>
                       </td>
                       <td class="px-6 py-4 text-gray-500 dark:text-zinc-400">{{ volume.driver }}</td>
                       <td class="px-6 py-4 text-gray-600 dark:text-zinc-300 tabular-nums">{{ volume.size }} {{ t('volumes.mb') }}</td>
@@ -411,7 +411,7 @@ onUnmounted(() => {
                    </tr>
                    <tr v-for="volume in filteredUnused" :key="volume.name" class="group hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-colors">
                       <td class="px-6 py-4">
-                          <div class="font-mono text-gray-900 dark:text-white truncate max-w-[250px] text-xs" :title="volume.name">{{ volume.name }}</div>
+                          <div class="font-mono text-gray-900 dark:text-white truncate max-w-62.5 text-xs" :title="volume.name">{{ volume.name }}</div>
                       </td>
                       <td class="px-6 py-4 text-gray-500 dark:text-zinc-400">{{ volume.driver }}</td>
                       <td class="px-6 py-4 text-gray-600 dark:text-zinc-300 tabular-nums">{{ volume.size }} {{ t('volumes.mb') }}</td>

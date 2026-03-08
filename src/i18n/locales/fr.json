@@ -598,7 +598,12 @@
     "logs": "Journaux",
     "configurationVariables": "Variables de configuration",
     "hide": "Masquer",
-    "show": "Afficher"
+    "show": "Afficher",
+    "updateStack": "Mettre à jour",
+    "updating": "Mise à jour…",
+    "updatingStack": "Récupération des dernières images pour {name}…",
+    "updateComplete": "Mise à jour terminée — les conteneurs utilisent les dernières images",
+    "updateFailed": "Échec de la mise à jour"
   },
   "appCard": {
     "active": "Actif ({count})",

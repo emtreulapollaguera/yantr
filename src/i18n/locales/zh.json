@@ -598,7 +598,12 @@
     "logs": "日志",
     "configurationVariables": "配置变量",
     "hide": "隐藏",
-    "show": "显示"
+    "show": "显示",
+    "updateStack": "更新",
+    "updating": "更新中…",
+    "updatingStack": "正在拉取 {name} 的最新镜像…",
+    "updateComplete": "更新完成 — 容器正在运行最新镜像",
+    "updateFailed": "更新失败"
   },
   "appCard": {
     "active": "活动 ({count})",

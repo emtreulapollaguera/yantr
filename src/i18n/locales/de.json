@@ -598,7 +598,12 @@
     "logs": "Protokolle",
     "configurationVariables": "Konfigurationsvariablen",
     "hide": "Ausblenden",
-    "show": "Anzeigen"
+    "show": "Anzeigen",
+    "updateStack": "Aktualisieren",
+    "updating": "Aktualisierung…",
+    "updatingStack": "Neueste Images für {name} werden geladen…",
+    "updateComplete": "Aktualisierung abgeschlossen – Container laufen mit den neuesten Images",
+    "updateFailed": "Aktualisierung fehlgeschlagen"
   },
   "appCard": {
     "active": "Aktiv ({count})",

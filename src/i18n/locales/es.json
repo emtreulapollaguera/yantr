@@ -598,7 +598,12 @@
     "logs": "Registros",
     "configurationVariables": "Variables de configuración",
     "hide": "Ocultar",
-    "show": "Mostrar"
+    "show": "Mostrar",
+    "updateStack": "Actualizar",
+    "updating": "Actualizando…",
+    "updatingStack": "Obteniendo las últimas imágenes para {name}…",
+    "updateComplete": "Actualización completada — los contenedores usan las últimas imágenes",
+    "updateFailed": "Error en la actualización"
   },
   "appCard": {
     "active": "Activo ({count})",

@@ -9,7 +9,7 @@ import { formatDuration, formatBytes } from "../utils/metrics";
 import {
   ArrowLeft, Globe, ExternalLink, Bot, Activity,
   Terminal, Server, Network, Trash2, RefreshCw, HardDrive, FolderOpen, AlertCircle,
-  Eye, EyeOff, Settings2, ChevronRight,
+  Eye, EyeOff, Settings2, ChevronRight, RotateCcw,
 } from "lucide-vue-next";
 
 const route = useRoute();
@@ -24,6 +24,32 @@ const projectId = computed(() => route.params.projectId);
 const stack = ref(null);
 const loading = ref(true);
 const removing = ref(false);
+const updating = ref(false);
+
+async function updateStack() {
+  if (updating.value || !stack.value) return;
+  updating.value = true;
+  toast.info(t('stackView.updatingStack', { name: stack.value.app?.name || projectId.value }));
+  try {
+    const containerNames = stack.value.services.map(s => s.name).filter(Boolean);
+    const res = await fetch(`${apiUrl.value}/api/autoupdate/run`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ containerNames }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      toast.success(t('stackView.updateComplete'));
+      await fetchStack();
+    } else {
+      toast.error(data.error || t('stackView.updateFailed'));
+    }
+  } catch (e) {
+    toast.error(t('stackView.updateFailed'));
+  } finally {
+    updating.value = false;
+  }
+}
 const showOnlyDescribedPorts = ref(true);
 
 // Env vars reveal state
@@ -452,7 +478,7 @@ onUnmounted(() => {
       <!-- ── Identity card ─────────────────────────────────────────────────── -->
       <div class="group relative bg-white dark:bg-[#0A0A0A] rounded-xl border border-gray-200 dark:border-zinc-800 p-6 flex flex-col sm:flex-row sm:items-center gap-6 hover:border-gray-300 dark:hover:border-zinc-700 transition-all duration-300">
         <!-- Glow Accent -->
-        <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <!-- Logo -->
         <div class="w-20 h-20 shrink-0 rounded-xl bg-gray-50 dark:bg-zinc-900 flex items-center justify-center overflow-hidden border border-gray-100 dark:border-zinc-800 shadow-sm transition-transform duration-500 group-hover:scale-105">
@@ -509,6 +535,14 @@ onUnmounted(() => {
           >
             <ExternalLink :size="12" />
             {{ t('stackView.appPage') }}
+          </button>
+          <button
+            @click="updateStack"
+            :disabled="updating"
+            class="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-blue-200 dark:border-blue-500/20 bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <RotateCcw :size="12" :class="updating ? 'animate-spin' : ''" />
+            {{ updating ? t('stackView.updating') : t('stackView.updateStack') }}
           </button>
           <button
             @click="removeStack"
@@ -709,7 +743,7 @@ onUnmounted(() => {
           {{ t('stackView.bindMounts') }}
         </h2>
         <div class="overflow-x-auto bg-white dark:bg-[#0A0A0A] rounded-xl border border-gray-200 dark:border-zinc-800">
-          <table class="w-full text-left min-w-[480px]">
+          <table class="w-full text-left min-w-120">
             <thead>
               <tr class="bg-gray-50 dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800">
                 <th class="px-5 py-3 text-[9px] font-bold uppercase tracking-widest text-gray-500 dark:text-zinc-400">{{ t('stackView.type') }}</th>
