@@ -1,0 +1,19 @@
+services:
+  opencode-docker:
+    build: .
+    image: opencode-docker:latest
+    command: ["web", "--hostname", "0.0.0.0", "--port", "4096"]
+    container_name: opencode-docker
+    labels:
+      yantr.app: "opencode-docker"
+      yantr.service: "AI Coder + Docker"
+    environment:
+      HOME: /home/opencode
+    ports:
+      - "4096"
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
