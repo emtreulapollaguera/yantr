@@ -104,23 +104,6 @@
       .delay-300 {
         animation-delay: 300ms;
       }
-      /* Install platform tabs */
-      .install-tab {
-        color: #71717a;
-        border-bottom: 2px solid transparent;
-        background: transparent;
-        cursor: pointer;
-        user-select: none;
-        letter-spacing: 0.03em;
-      }
-      .install-tab:hover {
-        color: #111827;
-        background: rgba(243, 244, 246, 0.9);
-      }
-      .install-tab-active {
-        color: #111827;
-        border-bottom-color: #111827;
-      }
       @keyframes slideInSoft {
         from {
           opacity: 0;
@@ -455,13 +438,6 @@
           </div>
 
           <div class="w-full max-w-3xl mt-10 animate-fade-in-up delay-200" id="install">
-            <div class="flex flex-wrap items-center justify-center gap-2 mb-5" id="install-tabs">
-              <button data-platform="linux" onclick="switchPlatform('linux')" class="install-tab install-tab-active text-[11px] font-mono px-3 py-2 transition-colors rounded-full border border-gray-200">Linux</button>
-              <button data-platform="macos" onclick="switchPlatform('macos')" class="install-tab text-[11px] font-mono px-3 py-2 transition-colors rounded-full border border-gray-200">macOS</button>
-              <button data-platform="wsl2" onclick="switchPlatform('wsl2')" class="install-tab text-[11px] font-mono px-3 py-2 transition-colors rounded-full border border-gray-200">WSL2</button>
-              <button data-platform="arm" onclick="switchPlatform('arm')" class="install-tab text-[11px] font-mono px-3 py-2 transition-colors rounded-full border border-gray-200">ARM64</button>
-            </div>
-
             <div class="rounded-3xl border border-gray-200 bg-gray-50/80 backdrop-blur px-5 py-6 sm:px-8 sm:py-8 shadow-xl shadow-gray-200/50">
               <p class="text-[11px] uppercase tracking-[0.24em] text-gray-400 text-center mb-3">Install Yantr with Docker</p>
               <code id="install-cmd" class="block text-center text-sm sm:text-base text-gray-900 whitespace-pre-wrap break-all leading-relaxed"
@@ -500,7 +476,7 @@
                   <span class="check-icon hidden text-emerald-500">Copied!</span>
                 </button>
 
-                <p id="install-platform-note" class="text-xs text-gray-500 text-center">Ubuntu · Debian · Fedora · Arch</p>
+                <p class="text-xs text-gray-500 text-center">Linux · macOS · Windows (WSL2) · ARM64</p>
                 <p class="text-xs text-gray-400 text-center">
                   Don't have Docker?
                   <a href="./install-docker/" class="underline font-bold hover:text-gray-600 transition-colors">Install guide →</a>
@@ -1176,42 +1152,6 @@
           console.error("Hero animation failed:", e);
         }
       }
-
-      // ── Platform tab switching ─────────────────────────────────────
-      const PLATFORMS = {
-        linux: {
-          label: 'Linux',
-          note: 'Ubuntu \u00b7 Debian \u00b7 Fedora \u00b7 Arch',
-        },
-        macos: {
-          label: 'macOS',
-          note: 'Docker Desktop required',
-        },
-        wsl2: {
-          label: 'Windows \u00b7 WSL2',
-          note: 'Run inside WSL2 terminal',
-        },
-        arm: {
-          label: 'ARM64 \u00b7 Raspberry Pi',
-          note: 'Pi 4 / Pi 5 / Jetson \u00b7 multi-arch image',
-        },
-      };
-
-      function switchPlatform(id) {
-        const p = PLATFORMS[id];
-        if (!p) return;
-
-        // Update tab active states
-        document.querySelectorAll('.install-tab').forEach(btn => {
-          const isActive = btn.dataset.platform === id;
-          btn.classList.toggle('install-tab-active', isActive);
-        });
-
-        // Update platform note under install command
-        const note = document.getElementById('install-platform-note');
-        if (note) note.textContent = p.note;
-      }
-
       document.addEventListener("DOMContentLoaded", () => {
         loadHeroAppShowcase();
         loadStars();
@@ -1219,7 +1159,6 @@
         loadRandomScreenshot();
         initHeroAnimation();
         initArchDiagram();
-        switchPlatform('linux');
       });
 
     // ── Interactive Architecture Diagram ──────────────────────────
