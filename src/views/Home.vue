@@ -24,6 +24,7 @@ import ExternalLinksCard from "../components/home/ExternalLinksCard.vue";
 import SponsorCard from "../components/home/SponsorCard.vue";
 import OpenCodeCard from "../components/home/OpenCodeCard.vue";
 import DailyAppSpotlightCard from "../components/home/DailyAppSpotlightCard.vue";
+import CaddyAuthProxyCard from "../components/home/CaddyAuthProxyCard.vue";
 
 const { apiUrl } = useApiUrl();
 const { currentTime } = useCurrentTime();
@@ -439,6 +440,11 @@ onUnmounted(() => {
 
             <div v-if="showMetrics">
               <BackupStatusCard />
+            </div>
+
+            <!-- Caddy Auth Proxy quick-deploy -->
+            <div v-if="showMetrics" class="sm:col-span-2 lg:col-span-1 h-full">
+              <CaddyAuthProxyCard :containers="containers" />
             </div>
 
             <YantraContainersGrid

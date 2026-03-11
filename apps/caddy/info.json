@@ -1,0 +1,33 @@
+{
+  "name": "Caddy Auth Proxy",
+  "logo": "QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68h",
+  "tags": [
+    "proxy",
+    "security",
+    "authentication",
+    "networking",
+    "utility",
+    "self-hosted",
+    "homelab"
+  ],
+  "ports": [
+    { "port": 8080, "protocol": "HTTP", "label": "Authenticated Proxy" }
+  ],
+  "short_description": "Add username/password authentication to any app running on your server using Caddy as a reverse proxy.",
+  "description": "Caddy Auth Proxy wraps any existing app with HTTP basic authentication using Caddy — a fast, production-ready web server. Deploy it alongside any app running on a local port: point UPSTREAM_PORT at the app's port, set your credentials, and Caddy will serve the authenticated proxy on port 8080 (remappable to any host port). Passwords are securely hashed with bcrypt at container startup. No plaintext secrets are ever stored. Use yantr's custom port mapping to expose the proxy on a different host port — for example, app on 56789 → proxy on 56784.",
+  "usecases": [
+    "Protect an internal app that has no built-in login by fronting it with basic auth.",
+    "Expose an app on a different port with authentication added transparently.",
+    "Quickly secure homelab services before exposing them on a local network."
+  ],
+  "website": "https://caddyserver.com",
+  "customapp": true,
+  "dependencies": [],
+  "notes": [
+    "Set UPSTREAM_PORT to the port of the app you want to protect",
+    "UPSTREAM_HOST defaults to host.docker.internal — works for apps on the host or other containers",
+    "Set AUTH_USER and AUTH_PASS before deploying (default: admin / changeme)",
+    "Use custom port mapping in yantr to expose the proxy on your desired host port",
+    "Passwords are bcrypt-hashed at startup — safe to use in production"
+  ]
+}

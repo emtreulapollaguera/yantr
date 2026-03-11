@@ -1,0 +1,18 @@
+services:
+  caddy:
+    build: .
+    image: caddy-auth:latest
+    container_name: caddy
+    labels:
+      yantr.app: "caddy"
+      yantr.service: "Auth Proxy"
+    environment:
+      UPSTREAM_HOST: ${UPSTREAM_HOST:-host.docker.internal}
+      UPSTREAM_PORT: ${UPSTREAM_PORT:-8000}
+      AUTH_USER: ${AUTH_USER:-admin}
+      AUTH_PASS: ${AUTH_PASS:-changeme}
+    ports:
+      - "8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
