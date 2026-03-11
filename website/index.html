@@ -114,6 +114,19 @@
           transform: translateY(0) scale(1);
         }
       }
+      @keyframes remotePanelSwap {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .remote-panel-swap {
+        animation: remotePanelSwap 220ms ease-out;
+      }
       @keyframes pulseGlow {
         0%,
         100% {
@@ -896,188 +909,200 @@
       </div>
 
       <!-- Remote Access Section -->
-      <section id="remote-access" class="py-16 sm:py-24 border-t border-gray-100">
+      <section id="remote-access" class="py-16 sm:py-24 border-t border-gray-100 bg-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-
-          <!-- Header -->
-          <div class="text-center mb-12 sm:mb-16">
-            <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-2">Remote Access</p>
-            <h2 class="text-3xl sm:text-4xl font-bold font-sans tracking-tight mb-4">Your homelab, everywhere. No cloud bill.</h2>
-            <p class="text-gray-500 font-sans max-w-2xl mx-auto leading-relaxed text-base">
-              Traditional remote access means renting a VPS, configuring port forwarding, managing SSL certificates, and hoping your ISP cooperates.
-              Yantr ships three tools that make all of that obsolete — each deployable in a single click.
+          <div class="max-w-3xl mb-10 sm:mb-14">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-3">Remote Access</p>
+            <h2 class="text-3xl sm:text-5xl font-bold font-sans tracking-tight text-gray-900">Make self-hosting reachable without making it fragile.</h2>
+            <p class="mt-5 text-base sm:text-lg text-gray-600 leading-relaxed font-sans">
+              The hard part is not running the app. The hard part is reaching it safely from outside your home network. Yantr bundles the three pieces most homelabs miss: private access, public ingress, and an auth layer in front of everything.
             </p>
           </div>
 
-          <!-- Old way callout -->
-          <div class="mb-10 rounded-2xl border border-red-100 bg-red-50/60 p-5 sm:p-7 flex flex-col sm:flex-row items-start gap-4">
-            <div class="shrink-0 w-9 h-9 rounded-full bg-red-100 border border-red-200 flex items-center justify-center text-base font-bold text-red-500 mt-0.5">✗</div>
-            <div>
-              <p class="font-bold text-gray-900 font-sans mb-1 text-sm tracking-tight">The old way</p>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                Rent a cloud VM ($5–20/mo) → configure a reverse proxy → open router ports → set up dynamic DNS → renew SSL certificates → patch the server — and still get locked out when your ISP changes your IP or blocks port 80. CGNAT? You're out of luck.
-              </p>
-            </div>
-          </div>
-
-          <!-- Three tools grid -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!-- Cloudflared -->
-            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-              <div class="h-1 w-full bg-gradient-to-r from-orange-400 to-amber-400"></div>
-              <div class="p-7 flex flex-col flex-1">
-                <div class="flex items-start justify-between mb-5">
-                  <div class="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
-                    </svg>
+          <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
+              <div class="lg:pr-4">
+                <div class="flex items-center justify-between gap-4 mb-6">
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">Pick the job</p>
+                    <p class="text-sm text-gray-500 mt-1">Each tool solves a different remote-access problem.</p>
                   </div>
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-orange-600 bg-orange-50 border border-orange-100 px-2.5 py-1 rounded-full">No ports needed</span>
-                </div>
-
-                <h3 class="text-lg font-bold font-sans text-gray-900 mb-1 tracking-tight">Cloudflare Tunnel</h3>
-                <p class="text-[11px] uppercase tracking-[0.15em] text-orange-500 font-semibold mb-4">cloudflared</p>
-
-                <p class="text-sm text-gray-600 leading-relaxed mb-5">
-                  A lightweight agent that dials out from your server to Cloudflare's global network. Your services become reachable from the internet without opening a single firewall port. Works behind CGNAT, no static IP required.
-                </p>
-
-                <div class="space-y-2 mb-6">
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Replaces VPS + nginx reverse proxy for public access</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Free Cloudflare DDoS protection + automatic TLS</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Zero-trust auth via Cloudflare Access</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Survives dynamic IPs and CGNAT</span>
+                  <div class="hidden sm:flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-500">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    Interactive guide
                   </div>
                 </div>
 
-                <div class="mt-auto rounded-xl bg-gray-50 border border-gray-100 p-3.5">
-                  <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Replaces</p>
-                  <p class="text-xs text-gray-700 font-mono">VPS ($5–20/mo) + port forwarding + dynamic DNS + SSL management</p>
+                <div id="remote-access-tabs" class="grid grid-cols-1 gap-3">
+                  <button
+                    type="button"
+                    data-remote-scenario="tailscale"
+                    class="group text-left rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+                  >
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Private access</p>
+                        <p class="text-base font-bold text-gray-900">Tailscale</p>
+                        <p class="text-sm text-gray-500 mt-1">Reach your apps from your own devices without exposing them publicly.</p>
+                      </div>
+                      <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 text-gray-700 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-remote-scenario="cloudflared"
+                    class="group text-left rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+                  >
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Public access</p>
+                        <p class="text-base font-bold text-gray-900">Cloudflare Tunnel</p>
+                        <p class="text-sm text-gray-500 mt-1">Publish a service securely without opening ports or renting a VPS.</p>
+                      </div>
+                      <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 text-gray-700 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-remote-scenario="caddy"
+                    class="group text-left rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+                  >
+                    <div class="flex items-start justify-between gap-4">
+                      <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Protection layer</p>
+                        <p class="text-base font-bold text-gray-900">Caddy Auth Proxy</p>
+                        <p class="text-sm text-gray-500 mt-1">Put a login wall and HTTPS in front of apps that were never designed for the open internet.</p>
+                      </div>
+                      <span class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 text-gray-700 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+
+                <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5">
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">What this replaces</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Port forwarding</span>
+                    <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Dynamic DNS</span>
+                    <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Reverse proxy babysitting</span>
+                    <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Manual SSL renewals</span>
+                    <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">One-off VPN servers</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)]">
+                <div id="remote-access-panel" class="remote-panel-swap">
+                  <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
+                    <div>
+                      <p id="remote-panel-kicker" class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-2">Private access</p>
+                      <h3 id="remote-panel-title" class="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">Reach your homelab like it lives on your own LAN.</h3>
+                    </div>
+                    <span id="remote-panel-badge" class="inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-white">Tailscale</span>
+                  </div>
+
+                  <p id="remote-panel-summary" class="text-base text-gray-600 leading-relaxed max-w-2xl">
+                    Instead of exposing services publicly, create a private encrypted network between your laptop, phone, and server. The service stays private, but still feels local.
+                  </p>
+
+                  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-8">
+                    <div class="rounded-2xl border border-gray-200 bg-white p-5">
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Without it</p>
+                      <ul id="remote-panel-before" class="space-y-3 text-sm text-gray-600"></ul>
+                    </div>
+                    <div class="rounded-2xl border border-gray-900 bg-gray-900 p-5 text-white shadow-lg shadow-gray-900/10">
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">With Yantr</p>
+                      <ul id="remote-panel-after" class="space-y-3 text-sm text-gray-100"></ul>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-4 mt-4">
+                    <div class="rounded-2xl border border-gray-200 bg-white p-5">
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Why it matters</p>
+                      <ul id="remote-panel-importance" class="space-y-3 text-sm text-gray-600"></ul>
+                    </div>
+                    <div class="rounded-2xl border border-gray-200 bg-white p-5">
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Best for</p>
+                      <ul id="remote-panel-bestfor" class="space-y-3 text-sm text-gray-600"></ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tailscale -->
-            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-              <div class="h-1 w-full bg-gradient-to-r from-violet-500 to-indigo-500"></div>
-              <div class="p-7 flex flex-col flex-1">
-                <div class="flex items-start justify-between mb-5">
-                  <div class="w-12 h-12 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
-                    </svg>
+            <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-6 mt-10 pt-10 border-t border-gray-200/80">
+              <div class="rounded-2xl border border-gray-200 bg-white p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-4">How they fit together</p>
+                <div class="space-y-4">
+                  <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                      <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-gray-200 text-sm font-bold text-gray-900">1</span>
+                      <span class="mt-2 h-full w-px bg-gray-200"></span>
+                    </div>
+                    <div class="pb-4">
+                      <p class="text-sm font-semibold text-gray-900">Use Tailscale for private operator access</p>
+                      <p class="text-sm text-gray-600 mt-1">Admin dashboards, SSH, and internal tools stay off the public internet entirely.</p>
+                    </div>
                   </div>
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-violet-600 bg-violet-50 border border-violet-100 px-2.5 py-1 rounded-full">WireGuard mesh</span>
-                </div>
-
-                <h3 class="text-lg font-bold font-sans text-gray-900 mb-1 tracking-tight">Tailscale</h3>
-                <p class="text-[11px] uppercase tracking-[0.15em] text-violet-500 font-semibold mb-4">tailscale</p>
-
-                <p class="text-sm text-gray-600 leading-relaxed mb-5">
-                  A zero-config WireGuard mesh VPN. Every device you own gets a private IP (100.x.x.x) and can reach your homelab directly — phone, laptop, remote server. Encrypted end-to-end, no port forwarding, works behind every NAT type.
-                </p>
-
-                <div class="space-y-2 mb-6">
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Replaces self-hosted OpenVPN / WireGuard server on VPS</span>
+                  <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                      <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-gray-200 text-sm font-bold text-gray-900">2</span>
+                      <span class="mt-2 h-full w-px bg-gray-200"></span>
+                    </div>
+                    <div class="pb-4">
+                      <p class="text-sm font-semibold text-gray-900">Use Cloudflare Tunnel when something must be public</p>
+                      <p class="text-sm text-gray-600 mt-1">Share a site, webhook endpoint, or client portal without touching router rules or ISP constraints.</p>
+                    </div>
                   </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Free tier covers personal use (up to 3 users, 100 devices)</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">MagicDNS — access hosts by name, not IP</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Exit node: route all traffic through your homelab</span>
+                  <div class="flex gap-4">
+                    <div class="flex items-start gap-4">
+                      <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-gray-200 text-sm font-bold text-gray-900">3</span>
+                    </div>
+                    <div>
+                      <p class="text-sm font-semibold text-gray-900">Use Caddy Auth as the safety net</p>
+                      <p class="text-sm text-gray-600 mt-1">Anything not meant to be public gets a login wall, HTTPS, and a clean single entry point.</p>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="mt-auto rounded-xl bg-gray-50 border border-gray-100 p-3.5">
-                  <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Replaces</p>
-                  <p class="text-xs text-gray-700 font-mono">VPN server on VPS + SSH tunnels + manual WireGuard config</p>
+              <div class="rounded-2xl border border-gray-200 bg-white p-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-4">Outcome</p>
+                <div class="space-y-4">
+                  <div class="rounded-2xl bg-gray-900 p-4 text-white">
+                    <p class="text-sm font-semibold">You stop treating remote access like ad-hoc infrastructure work.</p>
+                    <p class="text-sm text-gray-300 mt-2">It becomes part of the product: installed, understandable, and safe by default.</p>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="rounded-2xl border border-gray-200 bg-white p-4">
+                      <p class="text-2xl font-bold text-gray-900">0</p>
+                      <p class="text-sm text-gray-500 mt-1">ports you need to expose for private access</p>
+                    </div>
+                    <div class="rounded-2xl border border-gray-200 bg-white p-4">
+                      <p class="text-2xl font-bold text-gray-900">1</p>
+                      <p class="text-sm text-gray-500 mt-1">place to enforce auth and HTTPS</p>
+                    </div>
+                    <div class="rounded-2xl border border-gray-200 bg-white p-4">
+                      <p class="text-2xl font-bold text-gray-900">3</p>
+                      <p class="text-sm text-gray-500 mt-1">tools covering the full remote-access stack</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <!-- Caddy Auth Proxy -->
-            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
-              <div class="h-1 w-full bg-gradient-to-r from-emerald-400 to-teal-500"></div>
-              <div class="p-7 flex flex-col flex-1">
-                <div class="flex items-start justify-between mb-5">
-                  <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
-                    </svg>
-                  </div>
-                  <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">Auto HTTPS</span>
-                </div>
-
-                <h3 class="text-lg font-bold font-sans text-gray-900 mb-1 tracking-tight">Caddy Auth Proxy</h3>
-                <p class="text-[11px] uppercase tracking-[0.15em] text-emerald-600 font-semibold mb-4">caddy-yantr</p>
-
-                <p class="text-sm text-gray-600 leading-relaxed mb-5">
-                  A Caddy-based reverse proxy pre-configured with authentication middleware. Automatically obtains and renews TLS certificates. Gate any internal service behind login — OAuth, SSO, or basic auth — without touching config files.
-                </p>
-
-                <div class="space-y-2 mb-6">
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Replaces nginx + certbot + manual SSL renewal cron</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Automatic cert issuance via Let's Encrypt or ZeroSSL</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Add auth to any app that has none built-in</span>
-                  </div>
-                  <div class="flex items-start gap-2.5">
-                    <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">✓</span>
-                    <span class="text-xs text-gray-600">Human-readable config — no nginx location block syntax</span>
-                  </div>
-                </div>
-
-                <div class="mt-auto rounded-xl bg-gray-50 border border-gray-100 p-3.5">
-                  <p class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mb-1">Replaces</p>
-                  <p class="text-xs text-gray-700 font-mono">nginx + certbot + htpasswd + manual OAuth integration</p>
-                </div>
-              </div>
-            </div>
-
           </div>
-
-          <!-- Combination callout -->
-          <div class="mt-10 rounded-2xl border border-gray-200 bg-gray-50 p-7 flex flex-col sm:flex-row items-start gap-5">
-            <div class="shrink-0 w-9 h-9 rounded-full bg-black flex items-center justify-center text-white text-sm font-bold mt-0.5">→</div>
-            <div>
-              <p class="font-bold text-gray-900 font-sans mb-2 tracking-tight">Use them together for a complete setup</p>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                <strong class="font-semibold text-gray-800">Tailscale</strong> for private device-to-homelab access (your personal devices, trusted friends).
-                <strong class="font-semibold text-gray-800">Cloudflare Tunnel</strong> for anything you want publicly reachable (a blog, a file share, a status page).
-                <strong class="font-semibold text-gray-800">Caddy Auth Proxy</strong> sitting in front of both, adding authentication, HTTPS, and a single entry point for all your services.
-                Together they reproduce the security and accessibility of a $20/month managed cloud stack — at zero recurring cost.
-              </p>
-            </div>
-          </div>
-
-        </div>
       </section>
 
       <!-- FAQ Section -->
@@ -1385,7 +1410,165 @@
         loadRandomScreenshot();
         initHeroAnimation();
         initArchDiagram();
+        initRemoteAccessSection();
       });
+
+    function initRemoteAccessSection() {
+      const root = document.getElementById("remote-access");
+      if (!root) return;
+
+      const scenarios = {
+        tailscale: {
+          kicker: "Private access",
+          title: "Reach your homelab like it lives on your own LAN.",
+          badge: "Tailscale",
+          summary: "Instead of exposing services publicly, create a private encrypted network between your laptop, phone, and server. The service stays private, but still feels local.",
+          before: [
+            "Run your own VPN server or expose SSH to the internet.",
+            "Fight NAT, CGNAT, or hotel and mobile network restrictions.",
+            "Remember IPs, forward ports, and trust brittle home-router rules.",
+          ],
+          after: [
+            "Each trusted device gets secure access with no router changes.",
+            "MagicDNS makes services feel local instead of memorizing IP addresses.",
+            "Admin panels and internal tools stay private by default.",
+          ],
+          importance: [
+            "Most self-hosted apps are safer when they are not publicly reachable at all.",
+            "Private access removes the pressure to harden every dashboard like a public SaaS product.",
+            "It gives you remote control without turning your home network into perimeter infrastructure.",
+          ],
+          bestFor: [
+            "Admin dashboards",
+            "SSH and file access",
+            "Private AI or media apps",
+          ],
+        },
+        cloudflared: {
+          kicker: "Public access",
+          title: "Publish one service without turning your router into a project.",
+          badge: "Cloudflare Tunnel",
+          summary: "When something must be reachable on the public internet, tunnel outbound to Cloudflare instead of opening inbound ports. You get a cleaner, safer public entry point.",
+          before: [
+            "Open ports on your router and hope your ISP allows inbound traffic.",
+            "Maintain dynamic DNS, reverse proxy config, and certificate renewal jobs.",
+            "Rent a small VPS just to forward traffic back home.",
+          ],
+          after: [
+            "The tunnel connects out from your server, so no public port exposure is required.",
+            "Automatic TLS and Cloudflare edge protection reduce setup and risk.",
+            "CGNAT and changing home IPs stop being blockers for publishing apps.",
+          ],
+          importance: [
+            "This is the difference between 'I can access it at home' and 'I can share it reliably with someone else.'",
+            "It removes the most failure-prone part of self-hosting: inbound networking on residential internet.",
+            "You can publish selectively instead of making your entire homelab publicly reachable.",
+          ],
+          bestFor: [
+            "A public site or dashboard",
+            "Webhook endpoints",
+            "Client-facing or shared services",
+          ],
+        },
+        caddy: {
+          kicker: "Protection layer",
+          title: "Add HTTPS and a login wall to apps that were never built for exposure.",
+          badge: "Caddy Auth",
+          summary: "A lot of self-hosted software assumes a trusted local network. Caddy gives those apps a modern front door: TLS, auth, and a single clean entry point.",
+          before: [
+            "Expose apps directly even when they lack proper auth or session controls.",
+            "Manage nginx config, htpasswd files, OAuth glue, and certificate automation yourself.",
+            "Repeat the same security work app by app.",
+          ],
+          after: [
+            "Put one consistent auth and HTTPS layer in front of multiple services.",
+            "Automatic certificate management removes routine operational drift.",
+            "Apps with weak or missing auth stop being immediate public-risk candidates.",
+          ],
+          importance: [
+            "Self-hosted apps often solve product problems well but security ergonomics poorly.",
+            "A shared auth layer lets you standardize access instead of trusting every app equally.",
+            "This is what turns 'reachable' into 'safe enough to keep online.'",
+          ],
+          bestFor: [
+            "Apps with weak auth",
+            "Single-domain routing",
+            "Consistent HTTPS everywhere",
+          ],
+        },
+      };
+
+      const buttons = Array.from(root.querySelectorAll("[data-remote-scenario]"));
+      const panel = document.getElementById("remote-access-panel");
+      const kicker = document.getElementById("remote-panel-kicker");
+      const title = document.getElementById("remote-panel-title");
+      const badge = document.getElementById("remote-panel-badge");
+      const summary = document.getElementById("remote-panel-summary");
+      const before = document.getElementById("remote-panel-before");
+      const after = document.getElementById("remote-panel-after");
+      const importance = document.getElementById("remote-panel-importance");
+      const bestFor = document.getElementById("remote-panel-bestfor");
+
+      function renderList(items, dark = false, compact = false) {
+        return items.map(item => `
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full ${dark ? "bg-white/10 text-white" : "bg-gray-100 text-gray-700"} text-[11px] font-bold shrink-0">${compact ? "•" : "✓"}</span>
+            <span>${item}</span>
+          </li>
+        `).join("");
+      }
+
+      function setActive(id) {
+        const scenario = scenarios[id];
+        if (!scenario) return;
+
+        buttons.forEach(button => {
+          const isActive = button.dataset.remoteScenario === id;
+          button.setAttribute("aria-pressed", String(isActive));
+          button.classList.toggle("border-gray-900", isActive);
+          button.classList.toggle("bg-gray-900", isActive);
+          button.classList.toggle("text-white", isActive);
+          button.classList.toggle("shadow-lg", isActive);
+          button.classList.toggle("shadow-gray-900/10", isActive);
+
+          const icon = button.querySelector("span.inline-flex");
+          const eyebrow = button.querySelector("p.text-xs");
+          const heading = button.querySelector("p.text-base");
+          const desc = button.querySelector("p.text-sm");
+          if (icon) {
+            icon.classList.toggle("bg-white/10", isActive);
+            icon.classList.toggle("text-white", isActive);
+            icon.classList.toggle("bg-gray-100", !isActive);
+            icon.classList.toggle("text-gray-700", !isActive);
+          }
+          if (eyebrow) eyebrow.classList.toggle("text-gray-400", !isActive);
+          if (eyebrow) eyebrow.classList.toggle("text-gray-300", isActive);
+          if (heading) heading.classList.toggle("text-gray-900", !isActive);
+          if (heading) heading.classList.toggle("text-white", isActive);
+          if (desc) desc.classList.toggle("text-gray-500", !isActive);
+          if (desc) desc.classList.toggle("text-gray-300", isActive);
+        });
+
+        panel.classList.remove("remote-panel-swap");
+        void panel.offsetWidth;
+        panel.classList.add("remote-panel-swap");
+
+        kicker.textContent = scenario.kicker;
+        title.textContent = scenario.title;
+        badge.textContent = scenario.badge;
+        summary.textContent = scenario.summary;
+        before.innerHTML = renderList(scenario.before);
+        after.innerHTML = renderList(scenario.after, true);
+        importance.innerHTML = renderList(scenario.importance);
+        bestFor.innerHTML = renderList(scenario.bestFor, false, true);
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener("click", () => setActive(button.dataset.remoteScenario));
+      });
+
+      setActive("tailscale");
+    }
 
     // ── Interactive Architecture Diagram ──────────────────────────
     function initArchDiagram() {
