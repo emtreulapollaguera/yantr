@@ -1,10 +1,10 @@
 services:
-  caddy:
+  caddy-yantr:
     build: .
-    image: caddy-auth:latest
-    container_name: caddy
+    image: caddy-yantr:latest
+    container_name: caddy-yantr
     labels:
-      yantr.app: "caddy"
+      yantr.app: "caddy-yantr"
       yantr.service: "Auth Proxy"
     environment:
       UPSTREAM_HOST: ${UPSTREAM_HOST:-host.docker.internal}

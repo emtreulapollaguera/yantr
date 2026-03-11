@@ -37,7 +37,7 @@ const portOptions = computed(() => {
 })
 
 const caddyRunning = computed(() =>
-  props.containers.some(c => c.appLabels?.app === 'caddy' && c.state === 'running'),
+  props.containers.some(c => c.appLabels?.app === 'caddy-yantr' && c.state === 'running'),
 )
 
 const canDeploy = computed(() =>
@@ -57,7 +57,7 @@ async function deploy() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        appId: 'caddy',
+        appId: 'caddy-yantr',
         environment: {
           UPSTREAM_PORT: selectedPort.value,
           AUTH_USER: authUser.value.trim(),
