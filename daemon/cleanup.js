@@ -1,7 +1,7 @@
 import Docker from "dockerode";
 import { readFile, access } from "fs/promises";
 import { resolveComposeCommand } from "./compose.js";
-import { getProjectComposeRef, deleteProjectCompose } from "./stack-compose.js";
+import { getComposeProcessEnv, getProjectComposeRef, deleteProjectCompose } from "./stack-compose.js";
 import { spawnProcess, getBaseAppId } from "./utils.js";
 import { cleanupExpiredBrowsers } from "./dufs.js";
 import path from "path";
@@ -60,9 +60,8 @@ async function getUsedVolumes(excludeContainerIds = new Set()) {
     return usedVolumes;
   } catch (error) {
     log("warn", `Failed to check volume usage: ${error.message}`);
-    // Err on the side of caution - return empty Set will cause all volumes to be skipped
-    // since we can't verify safety
-    return new Set();
+    // Fail closed when usage cannot be determined.
+    return null;
   }
 }
 
@@ -130,6 +129,9 @@ export async function cleanupExpiredApps() {
 
     // Batch operation: get all volumes in use by non-expired containers (single API call)
     const usedVolumes = await getUsedVolumes(expiredContainerIds);
+    if (usedVolumes === null) {
+      throw new Error("Could not verify shared volume usage; aborting expired app cleanup to avoid deleting shared data");
+    }
     log("info", `Found ${usedVolumes.size} volume(s) in use by other containers`);
 
     // Second pass: remove expired containers and their volumes
@@ -159,15 +161,15 @@ export async function cleanupExpiredApps() {
 
             // Execute docker compose down with project name to target specific instance
             const composeCmd = await resolveComposeCommand({ socketPath });
+            const composeEnv = await getComposeProcessEnv(appPath, composeProject, {
+              DOCKER_HOST: `unix://${socketPath}`,
+            });
             const { stdout, stderr, exitCode } = await spawnProcess(
               composeCmd.command,
               [...composeCmd.args, "-p", composeProject, "-f", composeFile, "down"],
               {
                 cwd: appPath,
-                env: {
-                  ...process.env,
-                  DOCKER_HOST: `unix://${socketPath}`,
-                },
+                env: composeEnv,
               }
             );
 

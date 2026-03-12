@@ -10,6 +10,14 @@ export function getProjectComposePath(appPath, projectId) {
   return path.join(appPath, getProjectComposeFileName(projectId));
 }
 
+export function getProjectEnvFileName(projectId) {
+  return `.env.${projectId}`;
+}
+
+export function getProjectEnvPath(appPath, projectId) {
+  return path.join(appPath, getProjectEnvFileName(projectId));
+}
+
 export async function getProjectComposeRef(appPath, projectId) {
   const projectComposePath = getProjectComposePath(appPath, projectId);
   try {
@@ -44,9 +52,57 @@ export async function writeProjectCompose(appPath, projectId, composeContent) {
   };
 }
 
+export async function writeProjectEnv(appPath, projectId, environment) {
+  const envPath = getProjectEnvPath(appPath, projectId);
+  const envEntries = Object.entries(environment || {})
+    .filter(([, value]) => value !== null && value !== undefined && String(value).trim() !== "")
+    .map(([key, value]) => `${key}=${value}`);
+
+  if (envEntries.length === 0) {
+    try {
+      await unlink(envPath);
+    } catch {}
+    return { envPath: null, envFile: null };
+  }
+
+  await writeFile(envPath, envEntries.join("\n"), "utf-8");
+  return {
+    envPath,
+    envFile: getProjectEnvFileName(projectId),
+  };
+}
+
+export async function loadProjectEnv(appPath, projectId) {
+  const candidatePaths = [
+    getProjectEnvPath(appPath, projectId),
+    path.join(appPath, ".env"),
+  ];
+
+  for (const envPath of candidatePaths) {
+    try {
+      const content = await readFile(envPath, "utf-8");
+      return parseEnvFile(content);
+    } catch {}
+  }
+
+  return {};
+}
+
+export async function getComposeProcessEnv(appPath, projectId, baseEnv = {}) {
+  const projectEnv = await loadProjectEnv(appPath, projectId);
+  return {
+    ...process.env,
+    ...projectEnv,
+    ...baseEnv,
+  };
+}
+
 export async function deleteProjectCompose(appPath, projectId) {
   try {
     await unlink(getProjectComposePath(appPath, projectId));
+  } catch {}
+  try {
+    await unlink(getProjectEnvPath(appPath, projectId));
   } catch {}
 }
 
@@ -342,4 +398,24 @@ function isValidPort(port) {
 
 function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function parseEnvFile(content) {
+  const env = {};
+  for (const rawLine of String(content || "").split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const separatorIndex = line.indexOf("=");
+    if (separatorIndex <= 0) continue;
+
+    const key = line.slice(0, separatorIndex).trim();
+    if (!key) continue;
+
+    let value = line.slice(separatorIndex + 1);
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    env[key] = value;
+  }
+  return env;
 }

@@ -1,5 +1,5 @@
 import path from "path";
-import { readFile, writeFile, access } from "fs/promises";
+import { readFile, access } from "fs/promises";
 import YAML from "yaml";
 import {
   docker, log, appsDir, socketPath,
@@ -7,7 +7,7 @@ import {
 } from "../shared.js";
 import { spawnProcess, NotFoundError, BadRequestError } from "../utils.js";
 import { resolveComposeCommand } from "../compose.js";
-import { buildProjectComposeContent, writeProjectCompose } from "../stack-compose.js";
+import { buildProjectComposeContent, getComposeProcessEnv, writeProjectCompose, writeProjectEnv } from "../stack-compose.js";
 
 export default async function appsRoutes(fastify) {
 
@@ -138,16 +138,11 @@ export default async function appsRoutes(fastify) {
       }
     }
 
-    // Write .env file
-    if (environment && Object.keys(environment).length > 0) {
-      const envContent = Object.entries(environment).filter(([, v]) => v !== null && v !== undefined && String(v).trim() !== "").map(([k, v]) => `${k}=${v}`).join("\n");
-      if (envContent.length > 0) await writeFile(path.join(appPath, ".env"), envContent, "utf-8");
-    }
-
     const extraEnvEntries = extraEnv && typeof extraEnv === 'object'
       ? Object.entries(extraEnv).filter(([k, v]) => k.trim() && v !== null && v !== undefined && String(v).trim() !== '')
       : [];
     const projectName = (instanceId && instanceId > 1) ? `${appId}-${instanceId}` : appId;
+    await writeProjectEnv(appPath, projectName, environment);
     const modifiedComposeContent = buildProjectComposeContent(composeContent, {
       projectId: projectName,
       appId,
@@ -159,10 +154,11 @@ export default async function appsRoutes(fastify) {
 
     const composeCmd = await resolveComposeCommand({ socketPath, log });
     try {
+      const composeEnv = await getComposeProcessEnv(appPath, projectName, { DOCKER_HOST: `unix://${socketPath}` });
       const { stdout, stderr, exitCode } = await spawnProcess(
         composeCmd.command,
         [...composeCmd.args, "-p", projectName, "-f", composeFile, "up", "-d"],
-        { cwd: appPath, env: { ...process.env, DOCKER_HOST: `unix://${socketPath}` } }
+        { cwd: appPath, env: composeEnv }
       );
       if (exitCode !== 0) throw new Error(`docker compose failed with exit code ${exitCode}: ${stderr}`);
 

@@ -7,6 +7,7 @@ import { spawnProcess } from "../utils.js";
 import {
   applyCurrentPublishedPorts,
   buildProjectComposeContent,
+  getComposeProcessEnv,
   parseDockerPortInput,
   parseCompose,
   setServicePortBindings,
@@ -207,10 +208,11 @@ export default async function stacksRoutes(fastify) {
     const { composeFile } = await writeProjectCompose(appPath, projectId, nextComposeContent);
 
     const composeCmd = await resolveComposeCommand({ socketPath, log });
+    const composeEnv = await getComposeProcessEnv(appPath, projectId, { DOCKER_HOST: `unix://${socketPath}` });
     const { stdout, stderr, exitCode } = await spawnProcess(
       composeCmd.command,
       [...composeCmd.args, "-p", projectId, "-f", composeFile, "up", "-d"],
-      { cwd: appPath, env: { ...process.env, DOCKER_HOST: `unix://${socketPath}` } }
+      { cwd: appPath, env: composeEnv }
     );
 
     if (exitCode !== 0) {

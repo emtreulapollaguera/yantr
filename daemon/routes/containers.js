@@ -7,7 +7,7 @@ import {
 import { spawnProcess, getBaseAppId } from "../utils.js";
 import { resolveComposeCommand } from "../compose.js";
 import { getS3Config, createContainerBackup, listVolumeBackups } from "../backup.js";
-import { getProjectComposeRef, deleteProjectCompose } from "../stack-compose.js";
+import { getComposeProcessEnv, getProjectComposeRef, deleteProjectCompose } from "../stack-compose.js";
 
 export default async function containersRoutes(fastify) {
 
@@ -192,10 +192,11 @@ export default async function containersRoutes(fastify) {
           const { composePath, composeFile } = await getProjectComposeRef(appPath, composeProject);
           await access(composePath);
           const composeCmd = await resolveComposeCommand({ socketPath });
+          const composeEnv = await getComposeProcessEnv(appPath, composeProject, { DOCKER_HOST: `unix://${socketPath}` });
           const { stdout, stderr, exitCode } = await spawnProcess(
             composeCmd.command,
             [...composeCmd.args, "-p", composeProject, "-f", composeFile, "down"],
-            { cwd: appPath, env: { ...process.env, DOCKER_HOST: `unix://${socketPath}` } }
+            { cwd: appPath, env: composeEnv }
           );
           if (exitCode !== 0) throw new Error(`docker compose down failed: ${stderr}`);
           await deleteProjectCompose(appPath, composeProject);
