@@ -172,6 +172,7 @@
           <div class="space-y-4 text-sm sm:text-base text-gray-700 dark:text-zinc-300 leading-relaxed">
             <p>{{ app.name }} can be deployed with standard Docker Compose using the Yantr app catalog. This page collects the basic information searchers usually need first: what {{ app.name }} does, which Docker image Yantr uses, default ports, dependencies, and where to find the original compose template.</p>
             <p>If you searched for {{ app.name }} Docker, {{ app.name }} Docker Compose, or self-host {{ app.name }}, this page is the direct landing page for that app in Yantr's catalog.</p>
+            <p>After deployment, Yantr also lets you publish additional ports later from the stack page using Docker-style syntax. Use mappings like <span class="font-mono text-black dark:text-white">8080:8080</span> for a fixed host port or just <span class="font-mono text-black dark:text-white">8080</span> to let Docker assign a random host port for container port 8080.</p>
           </div>
         </section>
 
@@ -199,6 +200,7 @@
           {% if app.ports.length %}
             <div class="mb-6">
               <p class="text-xs font-semibold text-gray-500 dark:text-zinc-400 mb-2">Ports</p>
+              <p class="text-xs text-gray-500 dark:text-zinc-400 mb-3 leading-relaxed">These are the standard container ports Yantr knows about for {{ app.name }}. You can keep the default mapping, remap them, or publish extra ports later after deployment with Docker syntax such as <span class="font-mono text-black dark:text-white">3000:3000</span> or <span class="font-mono text-black dark:text-white">3000</span>.</p>
               <div class="overflow-x-auto rounded-xl border border-gray-100 dark:border-zinc-800">
                 <table class="w-full text-sm border-collapse">
                   <thead>

@@ -1212,7 +1212,7 @@
                 Most people do not need a full provisioning workflow just to get a clean Linux machine. Yantr gives you instant Debian and Alpine environments with SSH built in, so a fresh box is always one click away.
               </p>
               <p class="mt-4 text-sm text-gray-500 max-w-2xl">
-                On your laptop, on your homelab, or from anywhere through Yantr's remote-access stack, the shell is ready when you need it.
+                On your laptop, on your homelab, or from anywhere through Yantr's remote-access stack, the shell is ready when you need it. If you install extra software later, open more ports afterwards with normal Docker syntax like 8080:8080 or 8080 for auto-assignment.
               </p>
             </div>
           </div>
@@ -1244,6 +1244,7 @@
                     <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Deploy in one click from the Yantr catalog</span></li>
                     <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Connect with any SSH client using your mapped port</span></li>
                     <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Use it as a sandbox, toolbox, or permanent remote shell</span></li>
+                    <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Open extra ports later with Docker-style mappings after you install more software</span></li>
                   </ul>
                 </div>
 
@@ -1272,6 +1273,7 @@
                     <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Minimal overhead for disposable Linux workspaces</span></li>
                     <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Fast enough to create whenever you need a clean shell</span></li>
                     <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Ideal for scripts, troubleshooting, and isolated tasks</span></li>
+                    <li class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0">✓</span><span>Publish another app later with 3000:3000 or let Docker choose a host port with 3000</span></li>
                   </ul>
                 </div>
               </div>
@@ -1297,6 +1299,10 @@
                     <div class="rounded-2xl border border-gray-200 p-5">
                       <p class="text-sm font-semibold text-gray-900">Zero setup tax</p>
                       <p class="mt-2 text-sm text-gray-600">No ISO, no VM wizard, no manual SSH configuration. Yantr handles the boring parts so the box is ready when you are.</p>
+                    </div>
+                    <div class="rounded-2xl border border-gray-200 p-5 sm:col-span-3">
+                      <p class="text-sm font-semibold text-gray-900">Not locked to the first port</p>
+                      <p class="mt-2 text-sm text-gray-600">Debian and Alpine start with SSH exposed, but you can publish more services later from the stack page using the same syntax Docker uses: 8080:8080 for a fixed host port or 8080 to let Docker assign one.</p>
                     </div>
                   </div>
                 </div>
