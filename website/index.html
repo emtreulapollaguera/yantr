@@ -485,22 +485,17 @@
                     <code
                       id="install-cmd"
                       class="flex-1 block text-left text-sm sm:text-[13px] text-gray-800 whitespace-pre-wrap break-all leading-relaxed bg-white border border-gray-200 px-4 py-4 sm:px-6 font-mono selection:bg-gray-900 selection:text-white"
-                      >docker run -d --name yantr --network host -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes
-                      --restart unless-stopped ghcr.io/besoeasy/yantr</code
+                      >docker run -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/besoeasy/yantr</code
                     >
 
                     <button
                       id="copy-install"
                       onclick="
-                        navigator.clipboard
-                          .writeText(
-                            'docker run -d --name yantr --network host -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes --restart unless-stopped ghcr.io/besoeasy/yantr',
-                          )
-                          .then(() => {
-                            const b = document.getElementById('copy-install');
-                            b.classList.add('copied');
-                            setTimeout(() => b.classList.remove('copied'), 2000);
-                          })
+                        navigator.clipboard.writeText('docker run -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/besoeasy/yantr').then(() => {
+                          const b = document.getElementById('copy-install');
+                          b.classList.add('copied');
+                          setTimeout(() => b.classList.remove('copied'), 2000);
+                        })
                       "
                       class="flex items-center justify-center bg-gray-900 hover:bg-black text-white px-5 sm:px-6 rounded-r-xl transition-colors min-w-15 cursor-pointer"
                       title="Copy command"
