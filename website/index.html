@@ -1189,71 +1189,76 @@
         id="remote-access"
         class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16 sm:py-24 border-t border-gray-100 bg-white overflow-hidden"
       >
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-          <div class="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-8 xl:gap-16 mb-12 sm:mb-16 items-end">
-            <div>
-              <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-3">Remote Access</p>
-              <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-gray-900 max-w-4xl">
-                Make self-hosting reachable without making it fragile.
-              </h2>
-            </div>
-            <div class="xl:pb-2">
-              <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans max-w-2xl">
-                The hard part is not running the app. The hard part is reaching it safely from outside your home network. Yantr bundles the three pieces most
-                homelabs miss: private access, public ingress, and an auth layer in front of everything.
-              </p>
-              <div class="mt-6 flex flex-wrap gap-6 text-sm text-gray-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="space-y-6 sm:space-y-8">
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)] sm:p-8 lg:p-10">
+              <div class="flex flex-wrap items-start justify-between gap-6">
                 <div>
-                  <p class="text-2xl font-bold tracking-tight text-gray-900">3</p>
-                  <p>tools, one access story</p>
+                  <p class="mb-4 text-[11px] uppercase tracking-[0.2em] text-gray-500">Remote Access</p>
+                  <h2 class="max-w-4xl text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-gray-900 transition-transform duration-500 group-hover:translate-x-1">
+                    Make self-hosting reachable without making it fragile.
+                  </h2>
+                  <p class="mt-5 max-w-3xl text-base sm:text-lg text-gray-600 leading-relaxed font-sans">
+                    The hard part is not running the app. The hard part is reaching it safely from outside your home network. Yantr bundles the three pieces most
+                    homelabs miss: private access, public ingress, and an auth layer in front of everything.
+                  </p>
                 </div>
-                <div>
-                  <p class="text-2xl font-bold tracking-tight text-gray-900">0</p>
-                  <p>private-access ports exposed</p>
-                </div>
-                <div>
-                  <p class="text-2xl font-bold tracking-tight text-gray-900">1</p>
-                  <p>shared auth edge</p>
+                <div class="flex flex-wrap gap-3 text-sm text-gray-500">
+                  <div class="rounded-2xl border border-gray-200 bg-white px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg">
+                    <p class="text-2xl font-bold tracking-tight text-gray-900">3</p>
+                    <p>tools, one access story</p>
+                  </div>
+                  <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <p class="text-2xl font-bold tracking-tight text-gray-900">0</p>
+                    <p>private-access ports exposed</p>
+                  </div>
+                  <div class="rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-blue-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <p class="text-2xl font-bold tracking-tight text-gray-900">1</p>
+                    <p>shared auth edge</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="grid grid-cols-1 xl:grid-cols-[360px_minmax(0,1fr)] gap-8 xl:gap-12 items-start">
-            <div class="xl:pr-2">
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)] sm:p-8 lg:p-10">
               <div class="flex items-center justify-between gap-4 mb-6">
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">Pick the job</p>
                   <p class="text-sm text-gray-500 mt-1">Each tool solves a different remote-access problem.</p>
                 </div>
-                <div class="hidden sm:flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-500">
+                <div class="hidden sm:flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-500 transition-all duration-300 group-hover:border-gray-300 group-hover:shadow-sm">
                   <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                   Interactive guide
                 </div>
               </div>
 
-              <div id="remote-access-tabs" class="grid grid-cols-1 gap-3">
+              <div id="remote-access-tabs" class="grid grid-cols-1 gap-4">
                 <button
                   type="button"
                   data-remote-scenario="tailscale"
-                  class="group text-left rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+                  class="group text-left rounded-3xl border border-gray-200 bg-white px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg"
                 >
                   <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Private access</p>
-                      <p class="text-base font-bold text-gray-900">Tailscale</p>
-                      <p class="text-sm text-gray-500 mt-1">Reach your apps from your own devices without exposing them publicly.</p>
+                    <div class="flex gap-4">
+                      <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gray-100 text-gray-700 transition-all duration-300 group-hover:bg-gray-900 group-hover:text-white group-hover:rotate-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+                          />
+                        </svg>
+                      </span>
+                      <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Private access</p>
+                        <p class="text-base font-bold text-gray-900">Tailscale</p>
+                        <p class="text-sm text-gray-500 mt-1">Reach your apps from your own devices without exposing them publicly.</p>
+                      </div>
                     </div>
-                    <span
-                      class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 text-gray-700 group-hover:bg-gray-900 group-hover:text-white transition-colors"
-                    >
+                    <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gray-100 text-gray-700 transition-all duration-300 group-hover:bg-gray-900 group-hover:text-white group-hover:-translate-y-0.5">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-                        />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0-5 5m5-5H6" />
                       </svg>
                     </span>
                   </div>
@@ -1262,24 +1267,24 @@
                 <button
                   type="button"
                   data-remote-scenario="cloudflared"
-                  class="group text-left rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+                  class="group text-left rounded-3xl border border-gray-200 bg-white px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg"
                 >
                   <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Public access</p>
-                      <p class="text-base font-bold text-gray-900">Cloudflare Tunnel</p>
-                      <p class="text-sm text-gray-500 mt-1">Publish a service securely without opening ports or renting a VPS.</p>
+                    <div class="flex gap-4">
+                      <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gray-100 text-gray-700 transition-all duration-300 group-hover:bg-gray-900 group-hover:text-white group-hover:-rotate-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                        </svg>
+                      </span>
+                      <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Public access</p>
+                        <p class="text-base font-bold text-gray-900">Cloudflare Tunnel</p>
+                        <p class="text-sm text-gray-500 mt-1">Publish a service securely without opening ports or renting a VPS.</p>
+                      </div>
                     </div>
-                    <span
-                      class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 text-gray-700 group-hover:bg-gray-900 group-hover:text-white transition-colors"
-                    >
+                    <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gray-100 text-gray-700 transition-all duration-300 group-hover:bg-gray-900 group-hover:text-white group-hover:-translate-y-0.5">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                        />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0-5 5m5-5H6" />
                       </svg>
                     </span>
                   </div>
@@ -1288,43 +1293,43 @@
                 <button
                   type="button"
                   data-remote-scenario="caddy"
-                  class="group text-left rounded-2xl border border-gray-200 bg-white px-5 py-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+                  class="group text-left rounded-3xl border border-gray-200 bg-white px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg"
                 >
                   <div class="flex items-start justify-between gap-4">
-                    <div>
-                      <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Protection layer</p>
-                      <p class="text-base font-bold text-gray-900">Caddy Auth Proxy</p>
-                      <p class="text-sm text-gray-500 mt-1">Put a login wall and HTTPS in front of apps that were never designed for the open internet.</p>
+                    <div class="flex gap-4">
+                      <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gray-100 text-gray-700 transition-all duration-300 group-hover:bg-gray-900 group-hover:text-white group-hover:rotate-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </span>
+                      <div>
+                        <p class="text-xs uppercase tracking-[0.18em] text-gray-400 mb-1">Protection layer</p>
+                        <p class="text-base font-bold text-gray-900">Caddy Auth Proxy</p>
+                        <p class="text-sm text-gray-500 mt-1">Put a login wall and HTTPS in front of apps that were never designed for the open internet.</p>
+                      </div>
                     </div>
-                    <span
-                      class="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 text-gray-700 group-hover:bg-gray-900 group-hover:text-white transition-colors"
-                    >
+                    <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gray-100 text-gray-700 transition-all duration-300 group-hover:bg-gray-900 group-hover:text-white group-hover:-translate-y-0.5">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                        />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0-5 5m5-5H6" />
                       </svg>
                     </span>
                   </div>
                 </button>
               </div>
 
-              <div class="mt-8 rounded-2xl border border-gray-200 bg-white p-5">
+              <div class="mt-8 rounded-3xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:border-gray-300 hover:shadow-lg">
                 <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">What this replaces</p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Port forwarding</span>
-                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Dynamic DNS</span>
-                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Reverse proxy babysitting</span>
-                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">Manual SSL renewals</span>
-                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600">One-off VPN servers</span>
+                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600 transition-transform duration-300 hover:-translate-y-0.5">Port forwarding</span>
+                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600 transition-transform duration-300 hover:-translate-y-0.5">Dynamic DNS</span>
+                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600 transition-transform duration-300 hover:-translate-y-0.5">Reverse proxy babysitting</span>
+                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600 transition-transform duration-300 hover:-translate-y-0.5">Manual SSL renewals</span>
+                  <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-600 transition-transform duration-300 hover:-translate-y-0.5">One-off VPN servers</span>
                 </div>
               </div>
             </div>
 
-            <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 xl:p-12 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)]">
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)]">
               <div id="remote-access-panel" class="remote-panel-swap">
                 <div class="flex items-start justify-between gap-4 flex-wrap mb-6">
                   <div>
@@ -1335,7 +1340,7 @@
                   </div>
                   <span
                     id="remote-panel-badge"
-                    class="inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-white"
+                    class="inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-transform duration-300 group-hover:-translate-y-0.5"
                     >Tailscale</span
                   >
                 </div>
@@ -1346,64 +1351,74 @@
                 </p>
 
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-8">
-                  <div class="rounded-2xl border border-gray-200 bg-white p-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Without it</p>
+                  <div class="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gray-100 text-gray-700">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-12.728 12.728M5.636 5.636l12.728 12.728" /></svg>
+                      </span>
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Without it</p>
+                    </div>
                     <ul id="remote-panel-before" class="space-y-3 text-sm text-gray-600"></ul>
                   </div>
-                  <div class="rounded-2xl border border-gray-900 bg-gray-900 p-5 text-white shadow-lg shadow-gray-900/10">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">With Yantr</p>
+                  <div class="rounded-2xl border border-gray-900 bg-gray-900 p-5 text-white shadow-lg shadow-gray-900/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-white">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      </span>
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">With Yantr</p>
+                    </div>
                     <ul id="remote-panel-after" class="space-y-3 text-sm text-gray-100"></ul>
                   </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-4 mt-4">
-                  <div class="rounded-2xl border border-gray-200 bg-white p-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Why it matters</p>
+                  <div class="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 border border-blue-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" /></svg>
+                      </span>
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Why it matters</p>
+                    </div>
                     <ul id="remote-panel-importance" class="space-y-3 text-sm text-gray-600"></ul>
                   </div>
-                  <div class="rounded-2xl border border-gray-200 bg-white p-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Best for</p>
+                  <div class="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                      </span>
+                      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Best for</p>
+                    </div>
                     <ul id="remote-panel-bestfor" class="space-y-3 text-sm text-gray-600"></ul>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.2fr)_360px] gap-6 mt-12 pt-10 border-t border-gray-200/80">
-            <div class="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-4">How they fit together</p>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="flex gap-4">
-                  <div class="flex flex-col items-center">
-                    <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-gray-200 text-sm font-bold text-gray-900"
-                      >1</span
-                    >
-                    <span class="mt-2 h-full w-px bg-gray-200 md:hidden"></span>
-                  </div>
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)]">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-5">How they fit together</p>
+              <div class="grid grid-cols-1 gap-4">
+                <div class="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                  <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+                  </span>
                   <div>
                     <p class="text-sm font-semibold text-gray-900">Use Tailscale for private operator access</p>
                     <p class="text-sm text-gray-600 mt-1">Admin dashboards, SSH, and internal tools stay off the public internet entirely.</p>
                   </div>
                 </div>
-                <div class="flex gap-4">
-                  <div class="flex flex-col items-center">
-                    <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-gray-200 text-sm font-bold text-gray-900"
-                      >2</span
-                    >
-                    <span class="mt-2 h-full w-px bg-gray-200 md:hidden"></span>
-                  </div>
+                <div class="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                  <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-blue-200 bg-blue-50 text-blue-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+                  </span>
                   <div>
                     <p class="text-sm font-semibold text-gray-900">Use Cloudflare Tunnel when something must be public</p>
                     <p class="text-sm text-gray-600 mt-1">Share a site, webhook endpoint, or client portal without touching router rules or ISP constraints.</p>
                   </div>
                 </div>
-                <div class="flex gap-4">
-                  <div class="flex items-start gap-4">
-                    <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-gray-200 text-sm font-bold text-gray-900"
-                      >3</span
-                    >
-                  </div>
+                <div class="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                  <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 text-amber-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                  </span>
                   <div>
                     <p class="text-sm font-semibold text-gray-900">Use Caddy Auth as the safety net</p>
                     <p class="text-sm text-gray-600 mt-1">Anything not meant to be public gets a login wall, HTTPS, and a clean single entry point.</p>
@@ -1412,25 +1427,42 @@
               </div>
             </div>
 
-            <div class="rounded-2xl border border-gray-200 bg-white p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mb-4">Outcome</p>
-              <div class="space-y-4">
-                <div class="rounded-2xl bg-gray-900 p-4 text-white">
-                  <p class="text-sm font-semibold">You stop treating remote access like ad-hoc infrastructure work.</p>
-                  <p class="text-sm text-gray-300 mt-2">It becomes part of the product: installed, understandable, and safe by default.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_24px_70px_-50px_rgba(15,23,42,0.22)]">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-black text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  </span>
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">Outcome</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div class="rounded-2xl border border-gray-200 bg-white p-4">
-                    <p class="text-2xl font-bold text-gray-900">0</p>
-                    <p class="text-sm text-gray-500 mt-1">ports you need to expose for private access</p>
-                  </div>
-                  <div class="rounded-2xl border border-gray-200 bg-white p-4">
+                <p class="text-sm font-semibold text-gray-900">You stop treating remote access like ad-hoc infrastructure work.</p>
+                <p class="text-sm text-gray-600 mt-2">It becomes part of the product: installed, understandable, and safe by default.</p>
+              </div>
+              <div class="group rounded-3xl border border-emerald-200 bg-emerald-50 p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_70px_-50px_rgba(15,23,42,0.22)]">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-emerald-200 bg-white text-emerald-700">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7 7h10M7 17h6" /></svg>
+                  </span>
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Private by default</p>
+                </div>
+                <p class="text-2xl font-bold text-gray-900">0</p>
+                <p class="text-sm text-gray-700 mt-1">ports you need to expose for private access</p>
+              </div>
+              <div class="group rounded-3xl border border-blue-200 bg-blue-50 p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_70px_-50px_rgba(15,23,42,0.22)]">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-blue-200 bg-white text-blue-700">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h10" /></svg>
+                  </span>
+                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">Operationally simple</p>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
                     <p class="text-2xl font-bold text-gray-900">1</p>
-                    <p class="text-sm text-gray-500 mt-1">place to enforce auth and HTTPS</p>
+                    <p class="text-sm text-gray-700 mt-1">place to enforce auth and HTTPS</p>
                   </div>
-                  <div class="rounded-2xl border border-gray-200 bg-white p-4">
+                  <div>
                     <p class="text-2xl font-bold text-gray-900">3</p>
-                    <p class="text-sm text-gray-500 mt-1">tools covering the full remote-access stack</p>
+                    <p class="text-sm text-gray-700 mt-1">tools covering the full remote-access stack</p>
                   </div>
                 </div>
               </div>
@@ -1440,210 +1472,161 @@
       </section>
 
       <!-- Unlimited Linux Boxes Section -->
-      <section id="linux-boxes" class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16 sm:py-24 border-t border-gray-100 bg-white overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-          <div class="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-10 xl:gap-16 items-end mb-12 sm:mb-16">
-            <div>
-              <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-3">Unlimited Linux Boxes</p>
-              <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-sans tracking-tight text-gray-900 max-w-4xl">
-                Deploy Debian or Alpine in one click. SSH into it whenever you want.
+      <section id="linux-boxes" class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 border-t border-gray-100 bg-white py-16 sm:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="space-y-6 sm:space-y-8">
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)] sm:p-8 lg:p-10">
+              <p class="mb-4 text-[11px] uppercase tracking-[0.28em] text-gray-500">Unlimited Linux Boxes</p>
+              <h2 class="max-w-4xl font-sans text-4xl font-bold tracking-tight text-gray-900 transition-transform duration-500 group-hover:translate-x-1 sm:text-5xl lg:text-6xl">
+                Fresh Debian or Alpine shells, whenever the job needs one.
               </h2>
-            </div>
-            <div>
-              <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-sans max-w-2xl">
-                Most people do not need a full provisioning workflow just to get a clean Linux machine. Yantr gives you instant Debian and Alpine environments
-                with SSH built in, so a fresh box is always one click away.
+              <p class="mt-5 max-w-3xl font-sans text-base leading-relaxed text-gray-600 sm:text-lg">
+                Yantr turns Linux environments into something you deploy as casually as any other app. Click Debian or Alpine, get SSH immediately, and keep a
+                clean box around only for as long as it earns its keep.
               </p>
-              <p class="mt-4 text-sm text-gray-500 max-w-2xl">
-                On your laptop, on your homelab, or from anywhere through Yantr's remote-access stack, the shell is ready when you need it. If you install extra
-                software later, open more ports afterwards with normal Docker syntax like 8080:8080 or 8080 for auto-assignment.
-              </p>
+              <div class="mt-6 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-gray-700">
+                <span class="rounded-full border border-gray-200 bg-white px-4 py-2 transition-transform duration-300 hover:-translate-y-0.5 hover:border-gray-400">One-click deploy</span>
+                <span class="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-emerald-700 transition-transform duration-300 hover:-translate-y-0.5">SSH built in</span>
+                <span class="rounded-full border border-gray-200 bg-white px-4 py-2 transition-transform duration-300 hover:-translate-y-0.5 hover:border-gray-400">Local or remote</span>
+              </div>
             </div>
-          </div>
 
-          <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1.1fr)_360px] gap-8 xl:gap-12 items-start">
-            <div class="space-y-6">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)]">
-                  <div class="flex items-center justify-between gap-4 mb-6">
-                    <div class="flex items-center gap-4">
-                      <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-gray-900 shrink-0">
-                        <svg class="h-8 w-8" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                          <path
-                            d="M24 8C16.5 8 11 14.1 11 21.6c0 8.6 7.4 12.5 11.2 16.8.9 1.1 2.7 1.1 3.6 0C29.6 34.1 37 30.2 37 21.6 37 14.1 31.5 8 24 8Z"
-                            stroke="currentColor"
-                            stroke-width="2.4"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M24 14.5c-4.7 0-8.5 3.8-8.5 8.5 0 5.1 4.3 7.8 7 10.7.8.8 2.2.8 3 0 2.7-2.9 7-5.6 7-10.7 0-4.7-3.8-8.5-8.5-8.5Z"
-                            stroke="currentColor"
-                            stroke-width="2.4"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path d="M20 22.5c1.3-2.2 4.2-3.4 7-2.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">One-click box</p>
-                        <h3 class="text-2xl font-bold tracking-tight text-gray-900">Debian Linux</h3>
-                      </div>
-                    </div>
-                    <span
-                      class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-gray-600"
-                      >SSH Ready</span
-                    >
-                  </div>
-                  <p class="text-sm text-gray-600 leading-relaxed mb-6">
-                    A clean Debian environment with SSH built in. Good for scripts, testing packages, running tools, or keeping a remote shell ready without
-                    setting up a separate machine first.
-                  </p>
-                  <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Deploy in one click from the Yantr catalog</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Connect with any SSH client using your mapped port</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Use it as a sandbox, toolbox, or permanent remote shell</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Open extra ports later with Docker-style mappings after you install more software</span>
-                    </li>
-                  </ul>
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)] sm:p-8 lg:p-10">
+              <div class="flex flex-col gap-6">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-600 transition-all duration-300 group-hover:border-gray-300 group-hover:bg-white">
+                    Clean shell on demand
+                  </span>
+                  <span class="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-700 transition-all duration-300 group-hover:-translate-y-0.5">
+                    No VM ceremony
+                  </span>
                 </div>
 
-                <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)]">
-                  <div class="flex items-center justify-between gap-4 mb-6">
-                    <div class="flex items-center gap-4">
-                      <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-gray-900 shrink-0">
-                        <svg class="h-8 w-8" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                          <path
-                            d="M8 33 18.5 14.5 24 24l5.5-7.5L40 33"
-                            stroke="currentColor"
-                            stroke-width="2.4"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path d="M13.5 33h21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-                          <path d="M18 29.5h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-                          <path d="M23 18.5h2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">Minimal footprint</p>
-                        <h3 class="text-2xl font-bold tracking-tight text-gray-900">Alpine Linux</h3>
-                      </div>
-                    </div>
-                    <span
-                      class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-gray-600"
-                      >SSH Ready</span
-                    >
-                  </div>
-                  <p class="text-sm text-gray-600 leading-relaxed mb-6">
-                    A tiny Linux environment you can spin up fast and throw away just as fast. Perfect for quick tasks, debugging, experiments, and lightweight
-                    automation.
+                <div>
+                  <h3 class="max-w-3xl font-sans text-3xl font-bold tracking-tight text-gray-900 transition-transform duration-500 group-hover:translate-x-1 sm:text-4xl">
+                    Linux boxes should feel disposable, not precious.
+                  </h3>
+                  <p class="mt-4 max-w-3xl text-sm leading-relaxed text-gray-600 sm:text-base">
+                    Skip the provisioning spiral. Yantr gives you a fresh SSH-ready environment for scripts, package tests, debugging, automation, or keeping a
+                    remote shell available without dedicating a whole machine to it.
                   </p>
-                  <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Minimal overhead for disposable Linux workspaces</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Fast enough to create whenever you need a clean shell</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Ideal for scripts, troubleshooting, and isolated tasks</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                      <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-gray-700 text-[11px] font-bold shrink-0"
-                        >✓</span
-                      ><span>Publish another app later with 3000:3000 or let Docker choose a host port with 3000</span>
-                    </li>
-                  </ul>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <div class="rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg">
+                    <p class="text-[11px] uppercase tracking-[0.18em] text-gray-500">Create</p>
+                    <p class="mt-3 text-2xl font-bold text-gray-900">1 click</p>
+                    <p class="mt-2 text-sm leading-relaxed text-gray-600">Pick Debian or Alpine from the catalog and start from clean state every time.</p>
+                  </div>
+                  <div class="rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg">
+                    <p class="text-[11px] uppercase tracking-[0.18em] text-gray-500">Access</p>
+                    <p class="mt-3 text-2xl font-bold text-gray-900">SSH first</p>
+                    <p class="mt-2 text-sm leading-relaxed text-gray-600">The mapped port is the only detail you need before getting to work.</p>
+                  </div>
+                  <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <p class="text-[11px] uppercase tracking-[0.18em] text-blue-700">Expand</p>
+                    <p class="mt-3 text-2xl font-bold text-gray-900">More ports later</p>
+                    <p class="mt-2 text-sm leading-relaxed text-gray-700">Publish extra services afterwards with standard Docker syntax.</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)]">
-                <div class="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
+            <div class="group rounded-3xl border border-gray-200 bg-white overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)]">
+              <div class="flex items-center justify-between gap-4 border-b border-gray-200 bg-gray-50 px-4 py-3 sm:px-6">
+                <div class="flex items-center gap-2 transition-transform duration-500 group-hover:translate-x-1">
+                  <span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                  <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                </div>
+                <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-gray-500">yantr deploy linux-box</p>
+              </div>
+              <div class="border-b border-gray-200 px-4 py-5 font-mono text-sm text-gray-900 transition-colors duration-500 group-hover:bg-gray-50 sm:px-6">
+                ssh yantr@localhost -p XXXX
+              </div>
+              <div class="p-6 sm:p-8">
+                <p class="text-[11px] uppercase tracking-[0.18em] text-gray-500">Access pattern</p>
+                <p class="mt-3 max-w-3xl text-sm leading-relaxed text-gray-600 sm:text-base">
+                  Replace <span class="font-mono text-gray-900">XXXX</span> with the mapped SSH port. The same workflow works locally, through Tailscale, or
+                  through Yantr's remote-access stack.
+                </p>
+              </div>
+            </div>
+
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)] sm:p-8 lg:p-10">
+              <div class="flex flex-col gap-6">
+                <div class="flex items-end justify-between gap-4">
                   <div>
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Why this is a big deal</p>
-                    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
-                      You stop treating a fresh Linux machine like an infrastructure project.
-                    </h3>
-                    <p class="mt-4 text-sm sm:text-base text-gray-600 leading-relaxed">
-                      Normally, getting a new Linux environment means renting something, imaging something, or hand-rolling a container and wiring access
-                      yourself. Yantr collapses all of that into a button: deploy, get a port, SSH in, and start working.
-                    </p>
+                    <p class="text-[11px] uppercase tracking-[0.18em] text-gray-500">Choose your base</p>
+                    <h3 class="mt-2 font-sans text-2xl font-bold tracking-tight text-gray-900">Debian or Alpine</h3>
                   </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="rounded-2xl border border-gray-200 p-5">
-                      <p class="text-sm font-semibold text-gray-900">Disposable by default</p>
-                      <p class="mt-2 text-sm text-gray-600">
-                        Need a clean place to test a script, package, or config? Create one instantly instead of polluting your main machine.
-                      </p>
+                  <span class="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700 transition-transform duration-300 group-hover:-translate-y-0.5">
+                    SSH Ready
+                  </span>
+                </div>
+
+                <div class="space-y-3">
+                  <div class="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-sm font-semibold text-gray-900">Debian</p>
+                        <p class="mt-1 text-sm leading-relaxed text-gray-600">Fuller userspace for tools, packages, and long-lived utility boxes.</p>
+                      </div>
+                      <span class="rounded-full bg-gray-100 px-3 py-1 font-mono text-xs text-gray-600">stable</span>
                     </div>
-                    <div class="rounded-2xl border border-gray-200 p-5">
-                      <p class="text-sm font-semibold text-gray-900">Reachable from anywhere</p>
-                      <p class="mt-2 text-sm text-gray-600">
-                        Pair it with Tailscale or Cloudflare Tunnel and your shell is no longer tied to your local network.
-                      </p>
-                    </div>
-                    <div class="rounded-2xl border border-gray-200 p-5">
-                      <p class="text-sm font-semibold text-gray-900">Zero setup tax</p>
-                      <p class="mt-2 text-sm text-gray-600">
-                        No ISO, no VM wizard, no manual SSH configuration. Yantr handles the boring parts so the box is ready when you are.
-                      </p>
-                    </div>
-                    <div class="rounded-2xl border border-gray-200 p-5 sm:col-span-3">
-                      <p class="text-sm font-semibold text-gray-900">Not locked to the first port</p>
-                      <p class="mt-2 text-sm text-gray-600">
-                        Debian and Alpine start with SSH exposed, but you can publish more services later from the stack page using the same syntax Docker uses:
-                        8080:8080 for a fixed host port or 8080 to let Docker assign one.
-                      </p>
+                  </div>
+                  <div class="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-sm font-semibold text-gray-900">Alpine</p>
+                        <p class="mt-1 text-sm leading-relaxed text-gray-600">Tiny footprint for disposable shells, experiments, and quick isolated tasks.</p>
+                      </div>
+                      <span class="rounded-full bg-gray-100 px-3 py-1 font-mono text-xs text-gray-600">minimal</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="space-y-6 xl:sticky xl:top-24">
-              <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-[0_20px_60px_-45px_rgba(15,23,42,0.16)]">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-4">SSH into it</p>
-                <div class="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-4 font-mono text-sm text-gray-900 overflow-x-auto">
-                  ssh yantr@localhost -p XXXX
+            <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_28px_90px_-55px_rgba(15,23,42,0.22)] sm:p-8 lg:p-10">
+              <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500">From click to shell</p>
+              <div class="mt-6 space-y-4">
+                <div class="flex gap-4 rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-sm font-bold text-gray-900 transition-transform duration-300 hover:rotate-3">1</span>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Deploy the box</p>
+                    <p class="mt-1 text-sm leading-relaxed text-gray-600">Choose Debian for a richer environment or Alpine for a tiny one.</p>
+                  </div>
                 </div>
-                <p class="mt-4 text-sm text-gray-600 leading-relaxed">
-                  Replace <span class="font-mono text-gray-900">XXXX</span> with the mapped SSH port Yantr gives your Debian or Alpine box.
-                </p>
-                <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-                  Locally, that gets you into the box immediately. Remotely, the same workflow works through Yantr's remote-access tools.
-                </p>
+                <div class="flex gap-4 rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:translate-x-1 hover:border-gray-300 hover:shadow-lg">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-gray-50 text-sm font-bold text-gray-900 transition-transform duration-300 hover:-rotate-3">2</span>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Grab the mapped SSH port</p>
+                    <p class="mt-1 text-sm leading-relaxed text-gray-600">Yantr gives you the endpoint instead of making you configure it by hand.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 rounded-2xl border border-blue-200 bg-blue-50 p-4 transition-all duration-300 hover:translate-x-1 hover:shadow-lg">
+                  <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-blue-200 bg-white text-sm font-bold text-gray-900 transition-transform duration-300 hover:rotate-3">3</span>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Treat it like a tool</p>
+                    <p class="mt-1 text-sm leading-relaxed text-gray-700">Keep it around, tear it down, or publish another service from it later.</p>
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <div class="rounded-3xl border border-gray-200 bg-gray-900 p-6 sm:p-8 text-white shadow-[0_20px_60px_-45px_rgba(15,23,42,0.36)]">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-4">Powered by Yantr</p>
-                <p class="text-lg font-bold tracking-tight">A fresh Linux box becomes another app you can deploy on demand.</p>
-                <p class="mt-3 text-sm text-gray-300 leading-relaxed">
-                  That is the real shift: Linux environments stop being rare, precious machines and become cheap, repeatable tools you can spin up whenever a
-                  job needs one.
-                </p>
+            <div class="space-y-4">
+              <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_24px_70px_-50px_rgba(15,23,42,0.22)]">
+                <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500">Why it matters</p>
+                <p class="mt-4 text-lg font-bold tracking-tight text-gray-900 transition-transform duration-300 group-hover:translate-x-1">A fresh Linux machine stops being infrastructure work.</p>
+              </div>
+              <div class="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_24px_70px_-50px_rgba(15,23,42,0.22)]">
+                <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500">What changes</p>
+                <p class="mt-4 text-lg font-bold tracking-tight text-gray-900 transition-transform duration-300 group-hover:translate-x-1">Create a clean box when you need it, not a permanent machine to maintain.</p>
+              </div>
+              <div class="group rounded-3xl border border-amber-200 bg-amber-50 p-6 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_70px_-50px_rgba(15,23,42,0.22)]">
+                <p class="text-[11px] uppercase tracking-[0.22em] text-amber-700">Later on</p>
+                <p class="mt-4 text-lg font-bold tracking-tight text-gray-900 transition-transform duration-300 group-hover:translate-x-1">Publish more ports with mappings like 8080:8080 or just 8080.</p>
               </div>
             </div>
           </div>
