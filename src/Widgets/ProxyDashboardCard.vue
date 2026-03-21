@@ -65,7 +65,7 @@ async function reload() {
     class="relative group h-full flex flex-col bg-white dark:bg-[#0A0A0A] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/40"
   >
     <!-- top accent line -->
-    <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div class="absolute top-0 left-0 w-full h-0.5 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
     <div class="relative z-10 p-5 flex flex-col gap-4 h-full">
       <!-- header -->

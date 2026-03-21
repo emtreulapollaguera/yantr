@@ -67,8 +67,7 @@ const buildTimeAgo = formatTimeAgo(buildDate);
 <template>
   <div class="relative group h-full flex flex-col bg-white dark:bg-[#0A0A0A] rounded-xl overflow-hidden transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/40">
     <!-- Hover Accents -->
-    <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gray-400 dark:via-zinc-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTUwLCAxNTAsIDE1MCwgMC4xKSIvPjwvc3ZnPg==')] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+    <div class="absolute top-0 left-0 w-full h-[2px] bg-gray-400 dark:bg-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
     <div class="relative z-10 flex flex-col h-full p-6">
       <div class="flex items-center gap-3 mb-6">

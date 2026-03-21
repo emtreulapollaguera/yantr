@@ -118,7 +118,7 @@ async function deploy() {
 <template>
   <!-- Setup state: no cloudflared container found -->
   <div v-if="!cloudflaredContainer" class="relative group h-full flex flex-col bg-white dark:bg-[#0A0A0A] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/40 hover:-translate-y-0.5">
-    <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div class="absolute top-0 left-0 w-full h-0.5 bg-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
     <transition
       enter-active-class="transition-all duration-500 ease-out"
@@ -236,8 +236,8 @@ async function deploy() {
     <div
       class="absolute top-0 left-0 w-full h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       :class="isRunning
-        ? 'bg-linear-to-r from-transparent via-orange-500 to-transparent'
-        : 'bg-linear-to-r from-transparent via-red-500 to-transparent'"
+        ? 'bg-orange-500'
+        : 'bg-red-500'"
     ></div>
 
     <div class="relative z-10 p-6 flex flex-col h-full">
