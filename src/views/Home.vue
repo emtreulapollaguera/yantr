@@ -15,7 +15,22 @@ function dailyShuffle(arr) {
   }
   return seeded;
 }
-const widgets = dailyShuffle(Object.values(widgetModules).map((m) => m.default));
+// Interleave wide (2-col) and narrow (1-col) widgets so each row is always full:
+// pattern = [2-col][1-col][1-col] → exactly 4 grid columns, zero gaps.
+// Both pools are shuffled daily. When one pool runs out, the remainder is appended.
+function interleaveWidgets(all) {
+  const isWide = (w) => (w.__vccOpts?.colSpan ?? w.colSpan ?? 1) === 2;
+  const wide = all.filter(isWide);
+  const narrow = all.filter((w) => !isWide(w));
+  const result = [];
+  while (wide.length > 0 || narrow.length > 0) {
+    if (wide.length > 0) result.push(wide.shift());
+    if (narrow.length > 0) result.push(narrow.shift());
+    if (narrow.length > 0) result.push(narrow.shift());
+  }
+  return result;
+}
+const widgets = interleaveWidgets(dailyShuffle(Object.values(widgetModules).map((m) => m.default)));
 import { useApiUrl } from "../composables/useApiUrl";
 import { useI18n } from "vue-i18n";
 import YantraContainersGrid from "../components/YantraContainersGrid.vue";
@@ -218,24 +233,28 @@ onUnmounted(() => {
             </router-link>
           </div>
 
-          <!-- Unified Dashboard Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+          <!-- Containers Grid -->
+          <div
+            v-if="(showYantrApps && yantrContainers.length > 0) || (showVolumeBrowsers && volumeContainers.length > 0) || (showDockerApps && otherContainers.length > 0)"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 [grid-auto-flow:dense] mb-3 sm:mb-4"
+          >
             <YantraContainersGrid v-if="showYantrApps && yantrContainers.length > 0" :containers="yantrContainers" />
-
             <VolumeContainersGrid v-if="showVolumeBrowsers && volumeContainers.length > 0" :containers="volumeContainers" @stop-browser="stopBrowser" />
-
             <OtherContainersGrid v-if="showDockerApps && otherContainers.length > 0" :containers="otherContainers" @select="viewContainerDetail" />
+          </div>
 
-            <!-- Dynamic Widgets from src/Widgets/ -->
-            <template v-if="showMetrics">
-              <div
-                v-for="(widget, i) in widgets"
-                :key="i"
-                :class="widget.__vccOpts?.colSpan === 2 || widget.colSpan === 2 ? 'sm:col-span-2' : ''"
-              >
-                <component :is="widget" class="h-full" />
-              </div>
-            </template>
+          <!-- Metrics / Widgets Grid -->
+          <div v-if="showMetrics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 [grid-auto-flow:dense]">
+            <div class="col-span-full flex items-center gap-2 pb-1">
+              <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-secondary)]">{{ t("home.metrics") }}</span>
+            </div>
+            <component
+              v-for="(widget, i) in widgets"
+              :key="i"
+              :is="widget"
+              class="h-full"
+              :class="widget.__vccOpts?.colSpan === 2 || widget.colSpan === 2 ? 'sm:col-span-2' : ''"
+            />
           </div>
         </div>
       </div>
