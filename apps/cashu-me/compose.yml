@@ -1,0 +1,36 @@
+services:
+  tor:
+    image: containers.torproject.org/tpo/onion-services/onimages/tor:alpine
+    container_name: cashu-me-tor
+    labels:
+      yantr.app: "cashu-me"
+      yantr.service: "Tor Onion Service"
+    restart: unless-stopped
+    networks:
+      - cashu-me
+    volumes:
+      - tor-keys:/var/lib/tor
+    command: |
+      SOCKSPort 0.0.0.0:9050
+      HiddenServiceDir /var/lib/tor/onion_service
+      HiddenServicePort 80 web:3000
+
+  web:
+    build:
+      context: https://github.com/cashubtc/cashu.me.git#main
+      dockerfile: Dockerfile
+    container_name: cashu-me
+    labels:
+      yantr.app: "cashu-me"
+      yantr.service: "Web UI"
+    restart: unless-stopped
+    networks:
+      - cashu-me
+    ports:
+      - "3000"
+
+networks:
+  cashu-me:
+
+volumes:
+  tor-keys:
