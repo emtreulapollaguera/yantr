@@ -606,60 +606,7 @@
         </div>
       </section>
 
-      <!-- Architecture Diagram Section -->
-      <section id="architecture" class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16 sm:py-24 border-y border-gray-100 bg-white overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
-          <div class="text-center mb-10 relative z-10">
-            <p class="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-2">Architecture</p>
-            <h2 class="text-3xl sm:text-4xl font-bold font-sans tracking-tight mb-3">How Yantr Works</h2>
-            <p class="text-gray-500 font-sans max-w-xl mx-auto text-sm">Drag nodes to explore. Click any component to see details.</p>
-          </div>
-
-          <!-- Interactive Graph -->
-          <div id="arch-wrap" class="relative w-full rounded-2xl border border-gray-100 overflow-hidden select-none" style="height: 520px; cursor: default">
-            <!-- SVG edges layer -->
-            <svg id="arch-svg" class="absolute inset-0 w-full h-full pointer-events-none" style="overflow: visible"></svg>
-            <!-- Nodes injected by JS -->
-          </div>
-
-          <!-- Detail Panel (below graph, full width) -->
-          <div id="arch-detail" class="w-full rounded-2xl border border-gray-200 bg-white overflow-hidden transition-all duration-300 mt-4">
-            <div id="arch-detail-default" class="py-5 px-6 flex items-center gap-3 text-gray-400">
-              <span class="text-2xl">⬡</span>
-              <p class="text-xs font-medium tracking-wide uppercase">Click any node to inspect the component</p>
-            </div>
-            <div id="arch-detail-content" class="hidden p-6 flex flex-col sm:flex-row gap-6">
-              <div class="flex items-center gap-4 sm:flex-col sm:items-start sm:w-48 shrink-0">
-                <div
-                  id="arch-detail-icon"
-                  class="text-4xl w-14 h-14 flex items-center justify-center rounded-xl border border-gray-100 bg-gray-50 shrink-0"
-                ></div>
-                <div>
-                  <p id="arch-detail-label" class="font-bold text-gray-900 text-base leading-tight"></p>
-                  <p id="arch-detail-tag" class="text-[10px] uppercase tracking-widest text-gray-400 mt-1"></p>
-                </div>
-              </div>
-              <div class="flex-1 flex flex-col sm:flex-row gap-6">
-                <p id="arch-detail-desc" class="text-sm text-gray-600 leading-relaxed flex-1"></p>
-                <ul id="arch-detail-bullets" class="space-y-2 sm:w-56 shrink-0"></ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Legend -->
-          <div class="flex flex-wrap gap-4 mt-6 justify-center">
-            <span class="flex items-center gap-1.5 text-xs text-gray-500"><span class="w-2.5 h-2.5 rounded-full bg-black inline-block"></span>Core</span>
-            <span class="flex items-center gap-1.5 text-xs text-gray-500"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>Runtime</span>
-            <span class="flex items-center gap-1.5 text-xs text-gray-500"
-              ><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>API / Interface</span
-            >
-            <span class="flex items-center gap-1.5 text-xs text-gray-500"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>Storage</span>
-            <span class="flex items-center gap-1.5 text-xs text-gray-500"
-              ><span class="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block"></span>Network</span
-            >
-          </div>
-        </div>
-      </section>
+      <!-- Architecture Diagram Section removed -->
 
       <!-- Comparison Section -->
       <section id="comparison" class="py-16 sm:py-24 border-t border-gray-100">
