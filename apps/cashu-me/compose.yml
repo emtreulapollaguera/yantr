@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     networks:
       cashu-me:
-        ipv4_address: 172.18.0.2
+        ipv4_address: 172.30.0.2
     volumes:
       - tor-keys:/var/lib/tor
       - ./torrc:/etc/tor/torrc:ro
@@ -24,7 +24,7 @@ services:
     restart: unless-stopped
     networks:
       cashu-me:
-        ipv4_address: 172.18.0.3
+        ipv4_address: 172.30.0.3
     environment:
       TZ: ${TZ:-UTC}
     ports:
@@ -34,7 +34,7 @@ networks:
   cashu-me:
     ipam:
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 172.30.0.0/16
 
 volumes:
   tor-keys:
