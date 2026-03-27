@@ -6,8 +6,11 @@ services:
       yantr.app: "cashu-me"
       yantr.service: "Tor Onion Service"
     restart: unless-stopped
+    depends_on:
+      - web
     networks:
-      - cashu-me
+      cashu-me:
+        ipv4_address: 172.28.0.2
     volumes:
       - tor-keys:/var/lib/tor
       - ./torrc:/etc/tor/torrc:ro
@@ -22,7 +25,8 @@ services:
       yantr.service: "Web UI"
     restart: unless-stopped
     networks:
-      - cashu-me
+      cashu-me:
+        ipv4_address: 172.28.0.3
     environment:
       TZ: ${TZ:-UTC}
     ports:
@@ -30,6 +34,9 @@ services:
 
 networks:
   cashu-me:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
 
 volumes:
   tor-keys:
