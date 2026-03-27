@@ -10,6 +10,8 @@ services:
       - web
     networks:
       - cashu-me
+    extra_hosts:
+      - "cashu-me:host-gateway"
     volumes:
       - tor-keys:/var/lib/tor
       - ./torrc:/etc/tor/torrc:ro
